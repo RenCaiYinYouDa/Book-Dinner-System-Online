@@ -7,16 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-/**
- * tbl_dish
- * 
- * @author
- *
- */
 @Entity
 @Table(name = "tb_dish")
+@NamedQuery(name = "TbDish.findAll", query = "SELECT b FROM TbDish b")
 public class Dish implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
