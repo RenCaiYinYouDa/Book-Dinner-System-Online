@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2017/6/20 10:51:58                           */
+/* Created on:     2017/6/20 9:55:50                            */
 /*==============================================================*/
 
 
@@ -10,7 +10,7 @@ drop table if exists tb_admuser;
 
 drop table if exists tb_cart;
 
-drop table if exists tb_collection;
+drop table if exists tb_collect;
 
 drop table if exists tb_comment;
 
@@ -18,15 +18,13 @@ drop table if exists tb_comuser;
 
 drop table if exists tb_dish;
 
-drop table if exists tb_dish_type;
-
 drop table if exists tb_order;
 
-drop table if exists tb_order_dish;
-
-drop table if exists tb_security;
+drop table if exists tb_orderdish;
 
 drop table if exists tb_status;
+
+drop table if exists tb_type;
 
 /*==============================================================*/
 /* Table: tb_addr                                               */
@@ -62,9 +60,9 @@ create table tb_cart
 );
 
 /*==============================================================*/
-/* Table: tb_collection                                         */
+/* Table: tb_collect                                            */
 /*==============================================================*/
-create table tb_collection
+create table tb_collect
 (
    dishid               integer not null,
    userid               integer not null,
@@ -92,9 +90,8 @@ create table tb_comuser
    userid               integer not null auto_increment,
    username             varchar(64) not null,
    password             vachar(32) not null,
-   email                varchar(256) not null,
-   securityid           integer not null,
-   key                  varchar(256) not null,
+   email                varchar(255) not null,
+   security             char(10),
    primary key (userid)
 );
 
@@ -112,16 +109,6 @@ create table tb_dish
 );
 
 /*==============================================================*/
-/* Table: tb_dish_type                                          */
-/*==============================================================*/
-create table tb_dish_type
-(
-   typeid               integer not null auto_increment,
-   type                 varchar(256) not null,
-   primary key (typeid)
-);
-
-/*==============================================================*/
 /* Table: tb_order                                              */
 /*==============================================================*/
 create table tb_order
@@ -136,24 +123,14 @@ create table tb_order
 );
 
 /*==============================================================*/
-/* Table: tb_order_dish                                         */
+/* Table: tb_orderdish                                          */
 /*==============================================================*/
-create table tb_order_dish
+create table tb_orderdish
 (
    orderid              integer not null,
    dishid               integer not null,
    count                integer not null,
    primary key (orderid, dishid)
-);
-
-/*==============================================================*/
-/* Table: tb_security                                           */
-/*==============================================================*/
-create table tb_security
-(
-   securityid           integer not null auto_increment,
-   security             varchar(256) not null,
-   primary key (securityid)
 );
 
 /*==============================================================*/
@@ -166,6 +143,16 @@ create table tb_status
    primary key (statusid)
 );
 
+/*==============================================================*/
+/* Table: tb_type                                               */
+/*==============================================================*/
+create table tb_type
+(
+   typeid               integer not null auto_increment,
+   type                 varchar(256) not null,
+   primary key (typeid)
+);
+
 alter table tb_addr add constraint FK_Reference_1 foreign key (userid)
       references tb_comuser (userid) on delete restrict on update restrict;
 
@@ -175,10 +162,10 @@ alter table tb_cart add constraint FK_Reference_12 foreign key (dishid)
 alter table tb_cart add constraint FK_Reference_3 foreign key (userid)
       references tb_comuser (userid) on delete restrict on update restrict;
 
-alter table tb_collection add constraint FK_Reference_4 foreign key (userid)
+alter table tb_collect add constraint FK_Reference_4 foreign key (userid)
       references tb_comuser (userid) on delete restrict on update restrict;
 
-alter table tb_collection add constraint FK_Reference_5 foreign key (dishid)
+alter table tb_collect add constraint FK_Reference_5 foreign key (dishid)
       references tb_dish (dishid) on delete restrict on update restrict;
 
 alter table tb_comment add constraint FK_Reference_2 foreign key (userid)
@@ -187,11 +174,8 @@ alter table tb_comment add constraint FK_Reference_2 foreign key (userid)
 alter table tb_comment add constraint FK_Reference_6 foreign key (dishid)
       references tb_dish (dishid) on delete restrict on update restrict;
 
-alter table tb_comuser add constraint FK_Reference_15 foreign key (securityid)
-      references tb_security (securityid) on delete restrict on update restrict;
-
 alter table tb_dish add constraint FK_Reference_10 foreign key (typeid)
-      references tb_dish_type (typeid) on delete restrict on update restrict;
+      references tb_type (typeid) on delete restrict on update restrict;
 
 alter table tb_order add constraint FK_Reference_11 foreign key (statusid)
       references tb_status (statusid) on delete restrict on update restrict;
@@ -202,9 +186,9 @@ alter table tb_order add constraint FK_Reference_7 foreign key (userid)
 alter table tb_order add constraint FK_Reference_9 foreign key (addrid)
       references tb_addr (addrid) on delete restrict on update restrict;
 
-alter table tb_order_dish add constraint FK_Reference_13 foreign key (orderid)
+alter table tb_orderdish add constraint FK_Reference_13 foreign key (orderid)
       references tb_order (orderid) on delete restrict on update restrict;
 
-alter table tb_order_dish add constraint FK_Reference_14 foreign key (dishid)
+alter table tb_orderdish add constraint FK_Reference_14 foreign key (dishid)
       references tb_dish (dishid) on delete restrict on update restrict;
 
