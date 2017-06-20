@@ -21,8 +21,8 @@
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/BookDinnerSystem?useUnicode=true&amp;characterEncoding=utf8" />
-		<property name="username" value="root" />
+			value="jdbc:mysql://139.199.1.176:3306/BookDinnerSystem?useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="username" value="rcyyd" />
 		<property name="password" value="123456" />
 		<property name="initialSize" value="10" />
 		<property name="maxTotal" value="50" />
