@@ -21,4 +21,6 @@ public interface BaseDao <E, K extends Serializable>{
 	E findById(K id);
 	
 	List<E> findAll();
+	
+	List<E> findByKey(String keyword, String colName);
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_comuser")
-public class ComUser {
+public class ComUser extends User{
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userid;

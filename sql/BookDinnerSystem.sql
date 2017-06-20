@@ -91,10 +91,10 @@ create table tb_comuser
 (
    userid               integer not null auto_increment,
    username             varchar(64) not null,
-   password             vachar(32) not null,
+   password             varchar(32) not null,
    email                varchar(256) not null,
    securityid           integer not null,
-   key                  varchar(256) not null,
+   `key`                  varchar(256) not null,
    primary key (userid)
 );
 

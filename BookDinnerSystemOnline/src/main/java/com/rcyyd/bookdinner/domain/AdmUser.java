@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_admuser")
-public class AdmUser {
+public class AdmUser extends User{
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userid;
