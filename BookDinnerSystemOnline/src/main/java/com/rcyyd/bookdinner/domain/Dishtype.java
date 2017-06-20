@@ -13,6 +13,9 @@ public class Dishtype implements Serializable {
 	private String typeid;
 	private String type;
 
+	public Dishtype() {
+	}
+	
 	public Dishtype(String typeid, String type) {
 		this.typeid = typeid;
 		this.type = type;

@@ -30,7 +30,7 @@ public class Status implements Serializable {
 	}
 
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
