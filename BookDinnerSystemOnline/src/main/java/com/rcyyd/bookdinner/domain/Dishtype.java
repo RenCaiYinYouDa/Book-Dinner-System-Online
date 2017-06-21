@@ -10,22 +10,22 @@ import javax.persistence.Table;
 @Table(name = "tb_dish_type")
 public class Dishtype implements Serializable {
 	@Id
-	private String typeid;
+	private Integer typeid;
 	private String type;
 
 	public Dishtype() {
 	}
 	
-	public Dishtype(String typeid, String type) {
+	public Dishtype(Integer typeid, String type) {
 		this.typeid = typeid;
 		this.type = type;
 	}
 
-	public String getTypeid() {
+	public Integer getTypeid() {
 		return typeid;
 	}
 
-	public void setTypeid(String typeid) {
+	public void setTypeid(Integer typeid) {
 		this.typeid = typeid;
 	}
 

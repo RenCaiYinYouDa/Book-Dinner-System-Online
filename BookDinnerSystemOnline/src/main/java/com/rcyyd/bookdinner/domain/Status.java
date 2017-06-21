@@ -10,22 +10,22 @@ import javax.persistence.Table;
 @Table(name = "tb_status")
 public class Status implements Serializable {
 	@Id
-	private String statusid;
+	private Integer statusid;
 	private String status;
 
 	public Status() {
 	}
 
-	public Status(String typeid, String type) {
+	public Status(Integer typeid, String type) {
 		this.statusid = statusid;
 		this.status = status;
 	}
 
-	public String getStatusid() {
+	public Integer getStatusid() {
 		return statusid;
 	}
 
-	public void setStatusid(String statusid) {
+	public void setStatusid(Integer statusid) {
 		this.statusid = statusid;
 	}
 

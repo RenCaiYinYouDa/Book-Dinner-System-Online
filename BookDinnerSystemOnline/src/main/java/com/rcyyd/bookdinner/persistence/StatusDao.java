@@ -1,5 +1,7 @@
 package com.rcyyd.bookdinner.persistence;
 
-public interface StatusDao {
+import com.rcyyd.bookdinner.domain.Status;
+
+public interface StatusDao extends BaseDao<Status, Integer>{
 
 }
