@@ -36,7 +36,6 @@ private static ApplicationContext ctx = null;		// IoC容器(管理对象及对象依赖关系
 		user.setUsername("aa");
 		user.setPassword("aa");
 		user.setEmail("aa");
-		user.setSecurity("aa");
 		user.setKey("aa");
 //		ComUserDao dao = new ComUserDaoImpl();
 		cs.register(user);

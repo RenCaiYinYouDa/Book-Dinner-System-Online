@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 基于注解配置IoC容器 -->
+	<context:component-scan base-package="com.rcyyd.bookdinner" />
+	<context:annotation-config />
+	
+	<!-- 配置数据库连接池 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://139.199.1.176:3306/BookDinnerSystem?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true" />
+		<property name="username" value="rcyyd" />
+		<property name="password" value="123456" />
+		<property name="initialSize" value="10" />
+		<property name="maxTotal" value="50" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWaitMillis" value="10000" />
+	</bean>
+
+	<!-- 配置Hibernate的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.rcyyd.bookdinner.domain" />
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQL57Dialect
+				hibernate.show_sql=true
+				hibernate.format_sql=true
+			</value>
+		</property>
+	</bean>
+		
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+            class="org.springframework.orm.hibernate5.HibernateTransactionManager" >
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	
+	<!-- 配置声明式事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

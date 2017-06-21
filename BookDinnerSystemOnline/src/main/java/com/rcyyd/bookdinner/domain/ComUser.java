@@ -10,7 +10,9 @@ public class ComUser extends User{
 	private Integer userid;
 	private String username;
 	private String password;
-	private String security;
+	@ManyToOne
+	@JoinColumn(name = "securityid")
+	private Security security;
 	private String key;
 	private String email;
 	
@@ -33,10 +35,11 @@ public class ComUser extends User{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getSecurity() {
+	
+	public Security getSecurity() {
 		return security;
 	}
-	public void setSecurity(String security) {
+	public void setSecurity(Security security) {
 		this.security = security;
 	}
 	public String getKey() {
