@@ -8,8 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.rcyyd.bookdinner.domain.ComUser;
-import com.rcyyd.bookdinner.persistence.ComUserDao;
-import com.rcyyd.bookdinner.persistence.impl.ComUserDaoImpl;
+import com.rcyyd.bookdinner.domain.Security;
 import com.rcyyd.bookdinner.service.ComUserService;
 
 
@@ -37,6 +36,8 @@ private static ApplicationContext ctx = null;		// IoC容器(管理对象及对象依赖关系
 		user.setPassword("aa");
 		user.setEmail("aa");
 		user.setKey("aa");
+		Security security = new Security();
+		security.setSecurityid(1);
 //		ComUserDao dao = new ComUserDaoImpl();
 		cs.register(user);
 		System.out.println("aa");

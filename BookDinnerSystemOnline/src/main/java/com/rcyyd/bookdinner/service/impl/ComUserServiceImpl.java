@@ -3,7 +3,12 @@ package com.rcyyd.bookdinner.service.impl;
 
 import java.util.List;
 
+
+import javax.transaction.Transactional;
+
 import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rcyyd.bookdinner.domain.ComUser;
 import com.rcyyd.bookdinner.domain.Comment;
@@ -11,11 +16,14 @@ import com.rcyyd.bookdinner.domain.User;
 import com.rcyyd.bookdinner.persistence.ComUserDao;
 import com.rcyyd.bookdinner.persistence.CommentDao;
 import com.rcyyd.bookdinner.service.ComUserService;
-
+@Service
+@Transactional
 public class ComUserServiceImpl implements ComUserService{
 
+	@Autowired
 	ComUserDao userDao;
 	
+	@Autowired
 	CommentDao comDao;
 	
 	@Override
@@ -43,8 +51,7 @@ public class ComUserServiceImpl implements ComUserService{
 	@Override
 	public boolean publishComment(Comment comment) {
 		// TODO Auto-generated method stub
-		//return comDao.save(comment) != null;
-		return false;
+		return comDao.save(comment) != null;
 	}
 
 	@Override

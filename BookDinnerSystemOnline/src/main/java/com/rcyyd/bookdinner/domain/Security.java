@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,25 +13,26 @@ import javax.persistence.Table;
 @Table(name = "tb_security")
 public class Security implements Serializable{
 	@Id
-	@Column(name = "\"securityid\"")
-	private String securityid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "securityid")
+	private Integer securityid;
 	
-	@Column(name = "\"security\"")
+	@Column(name = "security")
 	private String security;
 	
 	public Security() {
 	}
 	
-	public Security(String securityid, String security) {
+	public Security(Integer securityid, String security) {
 		this.securityid = securityid;
 		this.security = security;
 	}
 	
-	public String getSecurityid() {
+	public Integer getSecurityid() {
 		return securityid;
 	}
 
-	public void setSecurityid(String securityid) {
+	public void setSecurityid(Integer securityid) {
 		this.securityid = securityid;
 	}
 	

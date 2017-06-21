@@ -3,16 +3,23 @@ package com.rcyyd.bookdinner.service.impl;
 import java.util.List;
 
 
-import org.apache.commons.codec.digest.DigestUtils;
+import javax.transaction.Transactional;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rcyyd.bookdinner.domain.AdmUser;
 import com.rcyyd.bookdinner.domain.User;
 import com.rcyyd.bookdinner.persistence.AdmUserDao;
 import com.rcyyd.bookdinner.service.AdmUserService;
 
+
+@Service
+@Transactional
 public class AdmUserServiceImpl implements AdmUserService{
 
+	@Autowired
 	AdmUserDao userDao;
 	
 	@Override
