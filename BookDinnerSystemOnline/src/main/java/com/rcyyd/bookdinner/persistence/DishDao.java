@@ -1,5 +1,7 @@
 package com.rcyyd.bookdinner.persistence;
 
-public interface DishDao {
+import com.rcyyd.bookdinner.domain.Dish;
+
+public interface DishDao extends BaseDao<Dish, Integer> {
 
 }
