@@ -31,6 +31,7 @@ public class DaoTest_ZZY {
 	@Test
 	public void CartDaoTest(){
 		CartService cs = (CartService)ctx.getBean(CartService.class);
+		
 		//≤Â»Î≤‚ ‘
 		for (int i = 0; i < 5; i++){
 			Cart c = new Cart();
@@ -39,6 +40,7 @@ public class DaoTest_ZZY {
 			c.setCount(i);
 			cs.addToCart(c);
 		}
+		
 		//…æ≥˝≤‚ ‘
 		for (int i = 0; i < 5; i++){
 			Cart c = new Cart();
@@ -47,6 +49,18 @@ public class DaoTest_ZZY {
 			c.setCount(i);
 			System.out.println(cs.deleteFromCart(c));
 		}
+		
+		//–ﬁ∏ƒ≤‚ ‘
+		Cart c0 = new Cart();
+		c0.setDishid(1);
+		c0.setUserid(1);
+		c0.setCount(1);
+		cs.addToCart(c0);
+		Cart c = new Cart();
+		c.setDishid(1);
+		c.setUserid(1);
+		c.setCount(20);
+		cs.changeCart(c);
 	}
 	
 	@Test
