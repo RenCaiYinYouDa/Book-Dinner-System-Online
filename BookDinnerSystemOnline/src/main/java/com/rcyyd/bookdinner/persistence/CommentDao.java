@@ -1,5 +1,7 @@
 package com.rcyyd.bookdinner.persistence;
 
-public interface CommentDao {
+import com.rcyyd.bookdinner.domain.Comment;
+
+public interface CommentDao extends BaseDao<Comment, Integer> {
 
 }
