@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>订单管理</title>
-    <meta name="description" content="订单管理">
+<title>添加商品</title>
+    <meta name="description" content="添加商品">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body data-type="generalComponents">
-	<header class="am-topbar am-topbar-inverse admin-header">
+<header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo">
                 <img src="assets/img/logo.png" alt="">
@@ -148,8 +148,6 @@
 
 
     <div class="tpl-page-container tpl-page-header-fixed">
-
-
         <div class="tpl-left-nav tpl-left-nav-hover">
             <div class="tpl-left-nav-title">
                 	功能列表
@@ -157,17 +155,14 @@
             <div class="tpl-left-nav-list">
                 <ul class="tpl-left-nav-menu">
                     <li class="tpl-left-nav-item">
-                        <!-- 打开状态 a 标签添加 active 即可   -->
-                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-table"></i>
                             <span>商品与订单</span>
-                            <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
-                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
-                        <ul class="tpl-left-nav-sub-menu" style="display:block">
+                        <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <!-- 打开状态 a 标签添加 active 即可   -->
-                                <a href="order-list.jsp" class="active">
+                                <a href="order-list.jsp">
                                     <i class="am-icon-angle-right"></i>
                                     <span>订单管理</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -176,26 +171,42 @@
                                 <a href="dish-list.jsp">
                                     <i class="am-icon-angle-right"></i>
                                     <span>商品管理</span>
-								</a>					
-                          	</li>
+                                </a>
+                            </li>
                         </ul>
-                    </li>                
+                    </li>
+
+                    <li class="tpl-left-nav-item">
+                        <!-- 打开状态 a 标签添加 active 即可   -->
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-wpforms"></i>
+                            <span>表单</span>
+                            <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <!-- 打开状态 添加 display:block-->
+                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                            <li>
+                                <a href="dishadd-form.jsp">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>添加商品</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
 
-
-
-
-
         <div class="tpl-content-wrapper">
             <div class="tpl-content-page-title">
-                                           订单管理
+                	添加商品
             </div>
             <div class="tpl-portlet-components">
                 <div class="portlet-title">
                     <div class="caption font-green bold">
-                        <span class="am-icon-code"></span> 列表
+                        <span class="am-icon-code"></span> 表单
                     </div>
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-small input-inline">
@@ -207,92 +218,77 @@
 
 
                 </div>
+
                 <div class="tpl-block">
+
                     <div class="am-g">
-                        <div class="am-u-sm-12 am-u-md-3">
-                            <div class="am-form-group">
-                                <select data-am-selected="{btnSize: 'sm'}">
-              						<option value="option1">所有类别</option>
-              						<option value="option2">IT业界</option>
-              						<option value="option3">数码产品</option>
-              						<option value="option3">笔记本电脑</option>
-              						<option value="option3">平板电脑</option>
-              						<option value="option3">只能手机</option>
-              						<option value="option3">超极本</option>
-            					</select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="am-g">
-                        <div class="am-u-sm-12">
-                            <form class="am-form">
-                                <table class="am-table am-table-striped am-table-hover table-main">
-                                    <thead>
-                                        <tr>
-                                            <th class="table-check"><input type="checkbox" class="tpl-table-fz-check"></th>
-                                            <th class="table-id">ID</th>
-                                            <th class="table-title">标题</th>
-                                            <th class="table-type">类别</th>
-                                            <th class="table-author am-hide-sm-only">作者</th>
-                                            <th class="table-date am-hide-sm-only">修改日期</th>
-                                            <th class="table-set">操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>1</td>
-                                            <td><a href="#">Business management</a></td>
-                                            <td>default</td>
-                                            <td class="am-hide-sm-only">测试1号</td>
-                                            <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
-                                            <td>
-                                                <div class="am-btn-toolbar">
-                                                    <div class="am-btn-group am-btn-group-xs">
-                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 接单</button>
-                                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 拒单</button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="am-cf">
-									<!--
-                                    	作者：zzy
-                                    	时间：2017-06-21
-                                    	描述：分页，待写
-                                    -->
-                                    <div class="am-fr">
-                                        <ul class="am-pagination tpl-pagination">
-                                            <li class="am-disabled"><a href="#">«</a></li>
-                                            <li class="am-active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">»</a></li>
-                                        </ul>
+                        <div class="tpl-form-body tpl-form-line">
+                            <form class="am-form tpl-form-line-form">
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">标题 <span class="tpl-form-line-small-title">Title</span></label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入标题文字">
+                                        <small>请填写标题文字10-20字左右。</small>
                                     </div>
                                 </div>
-                                <hr>
 
+                                <div class="am-form-group">
+                                    <label for="user-email" class="am-u-sm-3 am-form-label">发布时间 <span class="tpl-form-line-small-title">Time</span></label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" class="am-form-field tpl-form-no-bg" placeholder="发布时间" data-am-datepicker="" readonly/>
+                                        <small>发布时间为必填</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">作者 <span class="tpl-form-line-small-title">Author</span></label>
+                                    <div class="am-u-sm-9">
+                                        <select data-am-selected="{searchBox: 1}">
+  <option value="a">-The.CC</option>
+  <option value="b">夕风色</option>
+  <option value="o">Orange</option>
+</select>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">图片<span class="tpl-form-line-small-title">Images</span></label>
+                                    <div class="am-u-sm-9">
+                                        <div class="am-form-group am-form-file">
+                                            <div class="tpl-form-file-img">
+                                                <img src="assets/img/a5.png" alt="">
+                                            </div>
+                                            <button type="button" class="am-btn am-btn-danger am-btn-sm">
+    <i class="am-icon-cloud-upload"></i> 添加图片</button>
+                                            <input id="doc-form-file" type="file" multiple>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">添加分类 <span class="tpl-form-line-small-title">Type</span></label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" id="user-weibo" placeholder="请添加分类用点号隔开">
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                    </div>
+                                </div>
                             </form>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-                <div class="tpl-alert"></div>
+
+
             </div>
-
-
-
-
-
-
-
-
-
 
         </div>
 
