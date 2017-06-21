@@ -13,6 +13,7 @@ public class ComUser extends User{
 	@ManyToOne
 	@JoinColumn(name = "securityid")
 	private Security security;
+	@Column (name="\"key\"")
 	private String key;
 	private String email;
 	

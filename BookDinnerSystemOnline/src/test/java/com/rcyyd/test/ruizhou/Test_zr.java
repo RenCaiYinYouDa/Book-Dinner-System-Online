@@ -7,9 +7,13 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.rcyyd.bookdinner.domain.AdmUser;
 import com.rcyyd.bookdinner.domain.ComUser;
 import com.rcyyd.bookdinner.domain.Security;
+import com.rcyyd.bookdinner.service.AdmUserService;
 import com.rcyyd.bookdinner.service.ComUserService;
+
+import antlr.CSharpCodeGenerator;
 
 
 public class Test_zr {
@@ -29,7 +33,7 @@ private static ApplicationContext ctx = null;		// IoC容器(管理对象及对象依赖关系
 	}
 	
 	@Test
-	public void UserTest(){
+	public void comUserTest(){
 		ComUserService cs = (ComUserService)ctx.getBean(ComUserService.class);
 		ComUser user = new ComUser();
 		user.setUsername("aa");
@@ -38,9 +42,17 @@ private static ApplicationContext ctx = null;		// IoC容器(管理对象及对象依赖关系
 		user.setKey("aa");
 		Security security = new Security();
 		security.setSecurityid(1);
+		security.setSecurity("aa");
+		user.setSecurity(security);
 //		ComUserDao dao = new ComUserDaoImpl();
 		cs.register(user);
 		System.out.println("aa");
+	}
+	
+	@Test
+	public void loginTest() {
+		ComUserService cs = (ComUserService)ctx.getBean(ComUserService.class);
+		cs.login("aa", "aa");
 	}
 	
 }
