@@ -1,7 +1,11 @@
 package com.rcyyd.bookdinner.persistence.impl;
 
-import com.rcyyd.bookdinner.domain.Collection;
+import org.springframework.stereotype.Repository;
 
-public class CollectionDaoimpl extends BaseDaoHibernateAdapter<Collection,Integer> {
+import com.rcyyd.bookdinner.domain.Collection;
+import com.rcyyd.bookdinner.persistence.CollectionDao;
+
+@Repository
+public class CollectionDaoimpl extends BaseDaoHibernateAdapter<Collection,Integer> implements CollectionDao {
 
 }
