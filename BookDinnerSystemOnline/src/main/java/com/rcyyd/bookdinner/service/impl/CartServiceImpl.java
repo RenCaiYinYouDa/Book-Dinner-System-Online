@@ -26,4 +26,10 @@ public class CartServiceImpl implements CartService{
 		return cartDao.deleteByDoubleId(cart.getDishid(), cart.getUserid(), "dishid", "userid");
 	}
 
+	@Override
+	public boolean changeCart(Cart cart) {
+		cartDao.update(cart);
+		return true;
+	}
+
 }
