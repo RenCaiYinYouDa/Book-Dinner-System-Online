@@ -162,13 +162,13 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="order-list.jsp">
+                                <a href="showOrders">
                                     <i class="am-icon-angle-right"></i>
                                     <span>订单管理</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="dish-list.jsp">
+                                <a href="showDishes">
                                     <i class="am-icon-angle-right"></i>
                                     <span>商品管理</span>
                                 </a>
@@ -187,7 +187,7 @@
                         <!-- 打开状态 添加 display:block-->
                         <ul class="tpl-left-nav-sub-menu" style="display: block;">
                             <li>
-                                <a href="dishadd-form.jsp">
+                                <a href="addDish">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加商品</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -215,28 +215,25 @@
                                 <input type="text" class="form-control form-control-solid" placeholder="搜索..."> </div>
                         </div>
                     </div>
-
-
                 </div>
 
                 <div class="tpl-block">
-
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form">
+                            <form class="am-form tpl-form-line-form" action="saveDish" method="post" enctype="multipart/form-data">
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">商品名 <span class="tpl-form-line-small-title">Title</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入标题文字">
+                                        <input type="text" name="dishname" class="tpl-form-input" id="user-name" placeholder="请输入标题文字">
                                         <small>请填写商品名10-20字左右。</small>
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-email" class="am-u-sm-3 am-form-label">发布时间 <span class="tpl-form-line-small-title">Time</span></label>
+                                    <label for="user-email" class="am-u-sm-3 am-form-label">简介 <span class="tpl-form-line-small-title">Brief</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" class="am-form-field tpl-form-no-bg" placeholder="发布时间" data-am-datepicker="" readonly/>
-                                        <small>发布时间为必填</small>
+                                        <input type="text" name="pubdate" class="am-form-field tpl-form-no-bg" placeholder="商品简介"/>
+                                        <small>简介为选填</small>
                                     </div>
                                 </div>
 
@@ -249,25 +246,22 @@
                                             </div>
                                             <button type="button" class="am-btn am-btn-danger am-btn-sm">
     <i class="am-icon-cloud-upload"></i> 添加图片</button>
-                                            <input id="doc-form-file" type="file" multiple>
+                                            <input id="doc-form-file" name="image" type="file" multiple>
                                         </div>
 
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">添加分类 <span class="tpl-form-line-small-title">Type</span></label>
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">价格 <span class="tpl-form-line-small-title">Price</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" id="user-weibo" placeholder="请添加分类用点号隔开">
-                                        <div>
-
-                                        </div>
+                                        <input type="text" name="price" id="user-weibo" placeholder="请输入商品价格">
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                        <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
                                     </div>
                                 </div>
                             </form>

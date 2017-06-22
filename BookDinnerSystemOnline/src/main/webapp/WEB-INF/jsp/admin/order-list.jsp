@@ -168,13 +168,13 @@
                         <ul class="tpl-left-nav-sub-menu" style="display:block">
                             <li>
                                 <!-- 打开状态 a 标签添加 active 即可   -->
-                                <a href="order-list.jsp" class="active">
+                                <a href="showOrders" class="active">
                                     <i class="am-icon-angle-right"></i>
                                     <span>订单管理</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
-                                <a href="dish-list.jsp">
+                                <a href="showDishes">
                                     <i class="am-icon-angle-right"></i>
                                     <span>商品管理</span>
 								</a>					
@@ -192,7 +192,7 @@
                         <!-- 打开状态 添加 display:block-->
                         <ul class="tpl-left-nav-sub-menu" style="display: block;">
                             <li>
-                                <a href="dishadd-form.jsp">
+                                <a href="addDish">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加商品</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -233,12 +233,9 @@
                             <div class="am-form-group">
                                 <select data-am-selected="{btnSize: 'sm'}">
               						<option value="option1">所有类别</option>
-              						<option value="option2">IT业界</option>
-              						<option value="option3">数码产品</option>
-              						<option value="option3">笔记本电脑</option>
-              						<option value="option3">平板电脑</option>
-              						<option value="option3">只能手机</option>
-              						<option value="option3">超极本</option>
+              						<option value="option2">已接单</option>
+              						<option value="option3">未接单</option>
+              						<option value="option4">已拒绝</option>
             					</select>
                             </div>
                         </div>
