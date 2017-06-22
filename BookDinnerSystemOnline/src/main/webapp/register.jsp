@@ -35,6 +35,15 @@
 				return true;
 			}
 		</script>
+		
+		<style type="text/css">
+			select {
+				margin-bottom: 10px;
+				width: 300px;
+				padding: 15px;
+  				font-size: 16px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -51,18 +60,21 @@
 					<div class="container">
 				      <form class="form-signin" action="reg" method="post">
 				        <h3 class="form-signin-heading">用户注册</h3>
-				        <label for="username" class="sr-only">登录名称：</label>
+				        <label for="username" class="sr-only">用户名：</label>
 				        <input type="text" id="username"  name="user.loginName" class="form-control" placeholder="请输入登录名称" required autofocus>
 				        <label for="passwrod" class="sr-only">登录密码：</label>
 				        <input type="password" id="password"  name="user.loginPwd" class="form-control" placeholder="请输入密码" required>
-				        <label for="user.trueName" class="sr-only">真实姓名：</label>
-				        <input type="text" id="user.trueName"  name="user.trueName" class="form-control" placeholder="请输入真实姓名" required>
-				        <label for="user.phone" class="sr-only">电话号码：</label>
-				        <input type="text" id="user.phone"  name="user.phone" class="form-control" placeholder="请输入电话号码" required>
 				        <label for="user.address" class="sr-only">电子邮件：</label>
 				        <input type="text" id="user.address"  name="user.email" class="form-control" placeholder="请输入电子邮件" required>
-				        <label for="user.address" class="sr-only">默认地址：</label>
-				        <input type="text" id="user.address"  name="user.address" class="form-control" placeholder="请输入默认地址" required>
+				        <label for="user.trueName" class="sr-only">密保问题：</label>
+				        <select name="" >
+							<option value="0">DIVCSS5</option> 
+							<option value="1">DIVCSS5</option> 
+							<option value="2">DIVCSS5</option> 
+						</select> 
+				        <label for="user.trueName" class="sr-only">密保答案：</label>
+				        <input type="text" id="user.trueName"  name="user.trueName" class="form-control" placeholder="请输入密保答案" required>
+				        
 				        <div class="checkbox">
 				          <label>
 				            <input type="checkbox" value="remember-me">同意<a href="">"服务条款"</a>和<a href="">"隐私权相关政策"</a>
