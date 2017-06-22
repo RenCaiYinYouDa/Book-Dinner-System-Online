@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -166,13 +167,13 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu" style="display:block">
                             <li>
-                                <a href="order-list.jsp">
+                                <a href="showOrders">
                                     <i class="am-icon-angle-right"></i>
                                     <span>订单管理</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
                                 <!-- 打开状态 a 标签添加 active 即可   -->
-                                <a href="dish-list.jsp" class="active">
+                                <a href="showDishes" class="active">
                                     <i class="am-icon-angle-right"></i>
                                     <span>商品管理</span>
                             </li>
@@ -189,7 +190,7 @@
                         <!-- 打开状态 添加 display:block-->
                         <ul class="tpl-left-nav-sub-menu" style="display: block;">
                             <li>
-                                <a href="dishadd-form.jsp">
+                                <a href="addDish">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加商品</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -227,7 +228,7 @@
                         <div class="am-u-sm-12 am-u-md-6">
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
-                                    <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span><a href="dishadd-form.jsp"> 新增</a></button>
+                                    <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span><a href="addDish"> 新增</a></button>
                                 </div>
                             </div>
                         </div>
@@ -255,32 +256,20 @@
                     </div>
                     <div class="am-g">
                         <div class="tpl-table-images">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                        	<c:forEach items="${dishList}" var="dish">
+                        	<div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
                                 <div class="tpl-table-images-content">
-                                    <div class="tpl-table-images-content-i-time">发布时间：2016-09-12</div>
                                     <div class="tpl-i-title">
-                                        “你的旅行，是什么颜色？” 晒照片，换北欧梦幻极光之旅！
+                                        ${dish.dishname}&nbsp;&nbsp;
+                                        ${dish.brief}
                                     </div>
                                     <a href="javascript:;" class="tpl-table-images-content-i">
-                                        <div class="tpl-table-images-content-i-info">
-                                            <span class="ico">
-                                    <img src="../assets/img/user02.png" alt="">追逐
-                                 </span>
-
-                                        </div>
                                         <span class="tpl-table-images-content-i-shadow"></span>
-                                        <img src="../assets/img/a1.png" alt="">
+                                        <img src="../dishimg/${dish.image}" alt="">
                                     </a>
                                     <div class="tpl-table-images-content-block">
                                         <div class="tpl-i-font">
-                                            你最喜欢的艺术作品，告诉大家它们的------名图画，色彩，交织，撞色，线条雕塑装置当代古代现代作品的照片。
-                                        </div>
-                                        <div class="tpl-i-more">
-                                            <ul>
-                                                <li><span class="am-icon-qq am-text-warning"> 100+</span></li>
-                                                <li><span class="am-icon-weixin am-text-success"> 235+</span></li>
-                                                <li><span class="am-icon-github font-green"> 600+</span></li>
-                                            </ul>
+                                        	${dish.price}
                                         </div>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
@@ -291,19 +280,18 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                        	</c:forEach>
+                                                        
                             <div class="am-u-lg-12">
                                 <div class="am-cf">
-
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
-                                            <li class="am-disabled"><a href="#">«</a></li>
-                                            <li class="am-active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">»</a></li>
+                                            <c:if test="${currentPage > 1}">
+                                            <li class="am-active"><a href="showOrders?page=${currentPage - 1}">上一页</a></li>
+                                            </c:if>
+                                            <c:if test="${currentPage < totalPage}">
+                                            <li class="am-active"><a href="showOrders?page=${currentPage + 1}">下一页</a></li>
+                                            </c:if>
                                         </ul>
                                     </div>
                                 </div>

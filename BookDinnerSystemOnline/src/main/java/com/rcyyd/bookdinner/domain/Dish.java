@@ -17,8 +17,8 @@ public class Dish implements Serializable {
 	private int typeid;
 	private String dishname;
 	private long price;
-	private String brief;
 	private String image;
+	private String brief;
 
 	public String getImage() {
 		return image;
@@ -67,5 +67,4 @@ public class Dish implements Serializable {
 	public void setBrief(String brief) {
 		this.brief = brief;
 	}
-
 }
