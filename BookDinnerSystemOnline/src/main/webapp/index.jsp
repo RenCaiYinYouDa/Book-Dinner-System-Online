@@ -33,7 +33,7 @@
 				<li><a href="front/message.jsp"><h3>客户留言</h3></a></li>
 				<li><a href="front/login.jsp"><h3>客户登录</h3></a></li>
 				 <li><a href="front/register.jsp"><h3>客户注册</h3></a></li>
-				<li><a href="orderonline!getallOrder.action"><h3>我的订单</h3></a></li>
+				<li><a href="admin/myordersdetails.jsp"><h3>我的订单</h3></a></li>
 			</ol>
 		</div>
 		<div id="xian2"><hr color="black" style="position:absolute;height:12px;width:960px;left:224px;top:340px;"></div>
