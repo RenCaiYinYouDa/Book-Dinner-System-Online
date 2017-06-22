@@ -3,6 +3,9 @@ package com.rcyyd.bookdinner.persistence;
 import java.io.Serializable;
 import java.util.List;
 
+import com.rcyyd.bookdinner.domain.PageModel;
+
+
 
 public interface BaseDao <E, K extends Serializable>{
 
@@ -25,4 +28,8 @@ public interface BaseDao <E, K extends Serializable>{
 	List<E> findByKey(String keyword, String colName);
 	
 	List<E> findByKey(int keyword, String colName);
+	
+	PageModel<E> findByPage(int page, int size);
+	
+	PageModel<E> findByPage(int page, int size, String idName);
 }

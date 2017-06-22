@@ -26,4 +26,10 @@ public class SecurityServiceImpl implements SecurityService {
 		securityDao.delete(security);
 		return true;
 	}
+	
+	@Override
+	public boolean changeSecurity(Security security) {
+		securityDao.update(security);
+		return true;
+	}
 }

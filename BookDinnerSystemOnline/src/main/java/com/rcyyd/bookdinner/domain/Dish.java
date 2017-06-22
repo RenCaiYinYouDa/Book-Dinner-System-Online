@@ -18,6 +18,15 @@ public class Dish implements Serializable {
 	private String dishname;
 	private long price;
 	private String brief;
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public int getDishid() {
 		return dishid;

@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.rcyyd.bookdinner.domain.PageModel;
 import com.rcyyd.bookdinner.persistence.BaseDao;
 
 
@@ -71,7 +72,25 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 	@Override
 	public List<E> findByKey(String keyword, String colName) {
 		return sessionFactory.getCurrentSession()
-				.createQuery("from " + entityTypeName + " as e where e."+colName+" = "+keyword).getResultList();
+				.createQuery("from " + entityTypeName + " as e where e."+colName+" = '"+keyword+"'").getResultList();
+	}
+	
+	@Override
+	public PageModel<E> findByPage(int page, int size) {
+		return findByPage(page, size, "id");
+	}
+
+	@Override
+	public PageModel<E> findByPage(int page, int size, String idName) {
+		List<E> dataList = sessionFactory.getCurrentSession()
+				.createQuery("from " + entityTypeName + " as  o order by o." + idName + "  desc")
+				.setFirstResult((page - 1) * size).setMaxResults(size)
+				.getResultList();
+		int totalCount = sessionFactory.getCurrentSession()
+				.createQuery("select count(o) from " + entityTypeName + " as o", Long.class)
+				.getSingleResult().intValue();
+		int totalPage = (totalCount - 1) / size + 1;
+		return new PageModel<>(dataList, page, size, totalPage);
 	}
 	
 	@Override
