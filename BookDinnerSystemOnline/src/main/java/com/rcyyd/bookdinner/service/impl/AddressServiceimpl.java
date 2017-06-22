@@ -59,9 +59,9 @@ public class AddressServiceimpl implements AddressService {
 	 * 获取所有的地址
 	 */
 	@Override
-	public List<Address> getAllAddress() {
+	public List<Address> getAllAddress(int userid) {
 		// TODO Auto-generated method stub
-		return addressDao.findAll();
+		return addressDao.findByKey(userid, "userid");
 	}
 
 }

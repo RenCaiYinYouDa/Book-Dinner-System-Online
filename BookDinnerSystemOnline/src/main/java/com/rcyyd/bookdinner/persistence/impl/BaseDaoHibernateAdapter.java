@@ -73,5 +73,11 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 		return sessionFactory.getCurrentSession()
 				.createQuery("from " + entityTypeName + " as e where e."+colName+" = "+keyword).getResultList();
 	}
+	
+	@Override
+	public List<E> findByKey(int keyword, String colName) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from " + entityTypeName + " as e where e."+colName+" = "+keyword).getResultList();
+	} 
 
 }
