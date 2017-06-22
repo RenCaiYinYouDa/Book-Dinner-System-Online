@@ -27,7 +27,7 @@
 					<s:if test="#">
 						
 					    <div class="container">
-					      <form id="loginForm" class="form-signin" action="login" method="post">
+					      <form id="loginForm" class="form-signin" action="../comlogin" method="POST">
 					        <h3 class="form-signin-heading">用户登录</h3>
 					        <label for="loginName" class="sr-only">请输入用户名</label>					        
 					        <input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" required autofocus>
@@ -53,8 +53,8 @@
 					<s:if test="#parameters.role[0]=='admin'"> 
 
 						
-						<form id="loginForm" class="form-signin" action="login" method="post">
-					        <h3 class="form-signin-heading">用户登录</h3>
+						<form id="loginForm" class="form-signin" action="login" method="POST">
+					        <h3 class="form-signin-heading">管理员登录</h3>
 					        <label for="loginName" class="sr-only">登录名：</label>					        
 					        <input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" required autofocus>
 					        <label for="passwrod" class="sr-only">密码：</label>
