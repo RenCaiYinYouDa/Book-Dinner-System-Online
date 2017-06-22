@@ -1,56 +1,50 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 
 <html>
   <head>
-    <title>²ÍÆ·ÏêÏ¸Ò³Ãæ</title> 
-	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <title>é¤å“è¯¦ç»†é¡µé¢</title> 
+	<style>
+			a {
+				TEXT-DECORATION: none;
+			}
+			a:hover {
+				color: #4876FF;
+			}
+	</style>
   </head>
   
   <body>
-    <table width="90%" height="629" border="0" cellpadding="0"
-			cellspacing="0" align="center">
+   <table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
 			<tr>
-				<td width="200" height="101">
-					<img src="images/jb_logo.jpg" width="64" height="32" />
-					<strong><span
-						style="font-size: 20px;">ÍøÉÏ¶©²ÍÏµÍ³</span> </strong>
+				<td height="101">
+					<img src="img/zr1.jpg" width="70" height="50" style="border-radius: 10%;margin-left: 150px;"/>
+					<strong><span style="font-size: 30px;margin-left: 40px;">ç½‘ä¸Šè®¢é¤ç³»ç»Ÿ</span> </strong>
 				</td>
+				<td>  </td>
 			</tr>
 			<tr>
-				<td height="41" colspan="2"
-					style="background-image:url(images/001.gif);" align="center">
+				<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 					|
-					<a href="/Restrant/toShowMeal">ÍøÕ¾Ê×Ò³</a> |
-					<s:if test="(#session.admin==null) && (#session.user==null)">					
-					<a href="register.jsp">ÓÃ»§×¢²á</a> |
-					<a href="login.jsp?role=user">ÓÃ»§µÇÂ¼</a> |
-					<a href="login.jsp?role=admin">¹ÜÀíÔ±µÇÂ¼</a> |
+					<a href="#">&nbsp;&nbsp;ç½‘ç«™é¦–é¡µ&nbsp;&nbsp;</a> |
+					<s:if test="(#session.admin==null) && (#session.user==null)">
+						<a href="#">&nbsp;&nbsp;ç”¨æˆ·ä¸­å¿ƒ&nbsp;&nbsp;</a>|
+						<a href="#">&nbsp;&nbsp;ç”¨æˆ·æ³¨å†Œ&nbsp;&nbsp;</a> |
+						<a href="#">&nbsp;&nbsp;ç”¨æˆ·ç™»å½•&nbsp;&nbsp;</a> |
+						<a href="#">&nbsp;&nbsp;ç®¡ç†å‘˜ç™»å½•&nbsp;&nbsp;</a> |
 					</s:if>
 					<s:if test="#session.user!=null">
-					<a href="modifyMyInfo.jsp">ĞŞ¸Ä¸öÈËĞÅÏ¢</a> |
-					<a href="shopCart.jsp">ÎÒµÄ¹ºÎï³µ</a> |
-					<a href="/Restrant/toMyOrders">ÎÒµÄ¶©µ¥</a> |
-					<a href="/Restrant/logOut?type=userlogout">×¢Ïú</a> &nbsp;&nbsp; &nbsp;&nbsp;
-					<font style="color: red">»¶Ó­Äú£º${sessionScope.user.trueName }</font>					
-					</s:if>
-					<s:if test="#session.admin!=null">
-					<a href="/Restrant/toAddMeal">Ìí¼Ó²ÍÆ·</a> |
-					<a href="/Restrant/toManageMeal">¹ÜÀí²ÍÆ·</a> |
-					<a href="/Restrant/toManageOrders">¶©µ¥´¦Àí</a> |
-					<a href="/Restrant/logOut?type=adminlogout">×¢Ïú</a> &nbsp;&nbsp; &nbsp;&nbsp;
-					<font style="color: red">»¶Ó­Äú£º${sessionScope.admin.loginName }</font>
+						
+						<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;æ¬¢è¿æ‚¨ï¼šå°å°ç™½</font>
+						<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;é€€å‡ºç™»å½•&nbsp;&nbsp;</a>
 					</s:if>
 				</td>
 			</tr>
 			<tr>
 				<td valign="top" width="80%">
-					<img src="images/001.jpg" style="width: 100%; height: 72px" />
 					<br />
-					<div style="background-image:url(images/004.gif)">
-						&nbsp;
 					</div>
 					<div style="background-color:#FFCC99; font-size: 40px;" align="center">
-						²ÍÆ·ÏêÇé
+						é¤å“è¯¦æƒ…
 					</div>
 					<br>
 					<br />			
@@ -61,23 +55,23 @@
 							</td>
 							<td width="268" valign="top">
 								<br />
-								<span style="font-size: 20px;"> ÏêÏ¸×ÊÁÏ:
+								<span style="font-size: 20px;"> è¯¦ç»†èµ„æ–™:
 								<br />
-								<span style="font-size: 20px;"> &nbsp;&nbsp; &nbsp;&nbsp; Æ¤µ°ÊİÈâÖà
+								<span style="font-size: 20px;"> &nbsp;&nbsp; &nbsp;&nbsp; çš®è›‹ç˜¦è‚‰ç²¥
 								<br />
 								
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span style="text-decoration:line-through;color:gray;font-size: 20px;">Ô­¼Û£ºÈËÃñ±Ò${requestScope.aMeal.mealPrice }Ôª</span>
+								<span style="text-decoration:line-through;color:gray;font-size: 20px;">åŸä»·ï¼šäººæ°‘å¸${requestScope.aMeal.mealPrice }å…ƒ</span>
 								<br />
-								<span style="font-size: 20px;"> ÏÖ¼Û£ºÈËÃñ±Ò${requestScope.aMeal.mealPrice*0.9 }Ôª
+								<span style="font-size: 20px;"> ç°ä»·ï¼šäººæ°‘å¸${requestScope.aMeal.mealPrice*0.9 }å…ƒ
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span style="font-size: 20px;">±àºÅ£º123456789
+								<span style="font-size: 20px;">ç¼–å·ï¼š123456789
 								<a style="float: right;" href="/Restrant/addtoshopcart?mealId=${requestScope.aMeal.mealId }">
 									<img src="images/buy_cn.gif" border="0" width="60" height="20" />
 								</a>

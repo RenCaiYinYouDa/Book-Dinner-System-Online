@@ -107,8 +107,8 @@ create table tb_dish
    dishname             varchar(256) not null,
    typeid               integer not null,
    price                float not null,
-   image              varchar(512) not null,
-   brief                text not null,
+   image              varchar(512),
+   brief                text,
    primary key (dishid)
 );
 

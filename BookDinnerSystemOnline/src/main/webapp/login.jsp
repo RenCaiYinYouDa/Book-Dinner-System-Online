@@ -1,135 +1,79 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>��¼ҳ��</title>	
-		<link rel="stylesheet" href="/Restrant/css/styles.css" type="text/css" />		
+		<meta charset="utf-8">
+		<title>登录页面</title>	
+		<link rel="stylesheet" href="css/login.css" />
+		<!-- Bootstrap core CSS -->
+	    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	    <!-- Custom styles for this template -->
 	</head>
 	<body>
-		<table width="90%" height="629" border="0" cellpadding="0"
-			cellspacing="0" align="center">
+		<table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
 			<tr>
-				<td width="200" height="101">
-					<img src="images/jb_logo.jpg" width="64" height="32" />
-					<strong><span
-						style="font-size: 20px;">���϶���ϵͳ</span> </strong>
-				</td>
-				<td width="640" style="padding-left: 40px;">					
+				<td height="101">
+					<img src="img/zr1.jpg" width="70" height="50" style="border-radius: 10%;float: left;margin-left: 150px;"/>
+					<strong><span style="font-size: 30px;float: left;margin-left:40px;">网上订餐系统</span>
 				</td>
 			</tr>
 			<tr>
-				<td height="41" colspan="2"
-					style="background-image:url(images/001.gif);" align="center">
-					|
-					<a href="/Restrant/toShowMeal">��վ��ҳ</a> |
-					<s:if test="(#session.admin==null) && (#session.user==null)">					
-					<a href="register.jsp">�û�ע��</a> |
-					<a href="login.jsp?role=user">�û���¼</a> |
-					<a href="login.jsp?role=admin">����Ա��¼</a> |
-					</s:if>
-					<s:if test="#session.user!=null">
-					<a href="modifyMyInfo.jsp">�޸ĸ�����Ϣ</a> |
-					<a href="shopCart.jsp">�ҵĹ��ﳵ</a> |
-					<a href="/Restrant/toMyOrders">�ҵĶ���</a> |
-					<a href="/Restrant/logOut?type=userlogout">ע��</a> &nbsp;&nbsp; &nbsp;&nbsp;
-					<font style="color: red">��ӭ����${sessionScope.user.trueName }</font>					
-					</s:if>
-					<s:if test="#session.admin!=null">
-					<a href="/Restrant/toAddMeal">���Ӳ�Ʒ</a> |
-					<a href="/Restrant/toManageMeal">������Ʒ</a> |
-					<a href="/Restrant/toManageOrders">��������</a> |
-					<a href="/Restrant/logOut?type=adminlogout">ע��</a> &nbsp;&nbsp; &nbsp;&nbsp;
-					<font style="color: red">��ӭ����${sessionScope.admin.loginName }</font>
-					</s:if>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top">
-					<p>
-						<img src="images/left_top.jpg" width="215" height="100" />					
-				</td>
 				<td valign="top" width="80%">
-					<img src="images/001.jpg" width="595" height="72" />
-					<br />
+					<div style="background-color:#9AC0CD;font-size: 20px;" align="center">网上订餐系统用户请直接登录
+				    </div>
 					
-					<div style="background-image:url(images/004.gif)">
-						&nbsp;
-					</div>
-					<div style="background-color:#FFCC99;" align="center">
-						���϶���ϵͳ�û���ֱ�ӵ�¼
-					</div>
-					<br>
-					<br />
 					
-					<s:if test="#parameters.role[0]=='user'">
-					<form action="validateLogin?type=userlogin" method="post" name="ufrm">
-						<table width="263" border="0" cellspacing="0" cellpadding="4"
-							align="center">
-							<tr>
-								<td width="74">
-									�û�����
-								</td>
-								<td width="189">
-									<input type="text" name="loginName" style="width:150;" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									�� &nbsp;&nbsp;�룺
-								</td>
-								<td>
-									<input type="password" name="loginPwd" style="width:150;" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									<input type="submit" name="login" value="�� ¼" />
-								</td>
-							</tr>
-						</table>
-					</form>
+					<s:if test="#">
+						
+					    <div class="container">
+					      <form id="loginForm" class="form-signin" action="login" method="post">
+					        <h3 class="form-signin-heading">用户登录</h3>
+					        <label for="loginName" class="sr-only">请输入用户名</label>					        
+					        <input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" required autofocus>
+					        <label for="password" class="sr-only">请输入密码</label>
+					        <input type="password" id="password"  name="loginPwd" class="form-control" placeholder="请输入密码" required>
+					       
+					        <div class="checkbox">
+					          <label>
+					            <input type="checkbox" value="remember-me">两周以内自动登录
+					          </label>
+					        </div>
+					        <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">登录</button>
+					      </form>
+					      <div style="margin:0 auto; max-width:330px; padding: 20px 20px;">
+					      	<a href="register.jsp">马上注册</a>
+					      </div>
+					    </div>
+			
+			       
 					</s:if>
 					
 				
 					<s:if test="#parameters.role[0]=='admin'"> 
-					<form action="validateLogin?type=adminlogin" method="post" name="afrm">
-						<table width="263" border="0" cellspacing="0" cellpadding="4"
-							align="center">
-							<tr>
-								<td width="74">
-									��¼����
-								</td>
-								<td width="189">
-									<input type="text" name="loginName" style="width:150;" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									�� &nbsp;&nbsp;�룺
-								</td>
-								<td>
-									<input type="password" name="loginPwd" style="width:150;" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									<input type="submit" name="login" value="�� ¼" />
-								</td>
-							</tr>
-							
-							<tr>
-								<td colspan="2">
+
+						
+						<form id="loginForm" class="form-signin" action="login" method="post">
+					        <h3 class="form-signin-heading">用户登录</h3>
+					        <label for="loginName" class="sr-only">登录名：</label>					        
+					        <input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" required autofocus>
+					        <label for="passwrod" class="sr-only">密码：</label>
+					        <input type="password" id="password"  name="loginPwd" class="form-control" placeholder="请输入密码" required>
+					       
+					        <div class="checkbox">
+					          <label>
+					            <input type="checkbox" value="remember-me">两周以内自动登录
+					          </label>
+					        </div>
+					        <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">登录</button>
+					      </form>
+					      <div style="margin:0 auto; max-width:330px; padding: 20px 20px;">
+					      	<a href="toReg">马上注册</a>
+					      </div>
+					    </div>
+						
+						
 									
-								</td>
-							</tr>
-							
-						</table>
-					</form>					
 					</s:if>					
 				</td>
 			</tr>
