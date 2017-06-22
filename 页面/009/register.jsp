@@ -102,13 +102,9 @@
 				      </div>
 				    </div>			    
 								    
-                    		
-							
-								
-							
-					</div>
 				</td>
 			</tr>
+			
 			<tr>
 				<td colspan="2" align="center">
 					<br>
@@ -118,6 +114,7 @@
 					<br>
 				</td>
 			</tr>
+			
 		</table>
 	</body>
 </html>
