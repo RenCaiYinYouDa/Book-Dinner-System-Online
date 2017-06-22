@@ -1,4 +1,5 @@
 <%@page pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -82,6 +83,7 @@
                                 <span class="tpl-dropdown-content-font"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </span>
                             </a>
                         </li>
+
                     </ul>
                 </li>
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
@@ -151,6 +153,8 @@
 
 
     <div class="tpl-page-container tpl-page-header-fixed">
+
+
         <div class="tpl-left-nav tpl-left-nav-hover">
             <div class="tpl-left-nav-title">
                 Amaze UI 列表
@@ -163,28 +167,26 @@
                             <span>首页</span>
                         </a>
                     </li>
-                    
+                 
+					<li class="tpl-left-nav-item">
+                        <a href="rivisemeterial.jsp" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-key"></i>
+                            <span>修改信息</span>
 
-                    
-
+                        </a>
+                    </li>
                     <li class="tpl-left-nav-item">
                         <!-- 打开状态 a 标签添加 active 即可   -->
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
                             <i class="am-icon-table"></i>
-                            <span>修改信息</span>
+                            <span>订单查询</span>
                             <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
                             
                         </a>
                         
                     </li>
 
-                    <li class="tpl-left-nav-item">
-                        <a href="order.jsp" class="nav-link tpl-left-nav-link-list">
-                            <i class="am-icon-key"></i>
-                            <span>订单查询</span>
-
-                        </a>
-                    </li>
+                                       
                 </ul>
             </div>
         </div>
@@ -195,68 +197,104 @@
 
         <div class="tpl-content-wrapper">
             <div class="tpl-content-page-title">
-                修改个人信息
+                订单
             </div>
             <ol class="am-breadcrumb">
                 <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">修改信息</a></li>
+                <li><a href="#">订单查询</a></li>
             </ol>
             <div class="tpl-portlet-components">
                 <div class="portlet-title">
                     <div class="caption font-green bold">
-                        <span class="am-icon-code"></span> 个人信息
+                        <span class="am-icon-code"></span> 订单
                     </div>
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-small input-inline">
-                            
+                            <div class="input-icon right">
+                                <i class="am-icon-search"></i>
+                                <input type="text" class="form-control form-control-solid" placeholder="搜索..."> </div>
                         </div>
                     </div>
 
 
                 </div>
-                <div class="tpl-block ">
-
-                    <div class="am-g tpl-amazeui-form">
-
-
-                        <div class="am-u-sm-12 am-u-md-9">
-                            <form class="am-form am-form-horizontal">
-                                <div class="am-form-group">
-                                    <label for="user-name" class="am-u-sm-3 am-form-label">邮箱 /Email</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" id="user-name" placeholder="请输入邮箱">
-                                        <small>输入你的邮箱。</small>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-form-group">
+                                <select data-am-selected="{btnSize: 'sm'}">
+              						<option value="option1">所有类别</option>
+              						<option value="option2">IT业界</option>
+              						<option value="option3">数码产品</option>
+              						<option value="option3">笔记本电脑</option>
+              						<option value="option3">平板电脑</option>
+              						<option value="option3">只能手机</option>
+              						<option value="option3">超极本</option>
+            					</select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-check"><input type="checkbox" class="tpl-table-fz-check"></th>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-title">订单号</th>
+                                            <th class="table-type">状态</th>
+                                            <th class="table-author am-hide-sm-only">作者</th>
+                                            <th class="table-date am-hide-sm-only">购买日期</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    	<c:forEach items="${orderList}" var="order" varStatus="status">
+                                    		<tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>${status.index+1}</td>
+                                            <td><a href="#">${order.ordernum}</a></td>
+                                            <td>${order.statusid}</td>
+                                            <td class="am-hide-sm-only">${order.userid}</td>
+                                            <td class="am-hide-sm-only">${order.date}</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 接单</button>
+                                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 拒单</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    	</c:forEach>
+                                    </tbody>
+                                </table>
+                                <div class="am-cf">
+									<!--
+                                    	作者：zzy
+                                    	时间：2017-06-21
+                                    	描述：分页，待写
+                                    -->
+                                    <div class="am-fr">
+                                        <ul class="am-pagination tpl-pagination">
+                                        	<c:if test="${currentPage > 1}">
+                                            <li class="am-active"><a href="showOrders?page=${currentPage - 1}">上一页</a></li>
+                                            </c:if>
+                                            <c:if test="${currentPage < totalPage}">
+                                            <li class="am-active"><a href="showOrders?page=${currentPage + 1}">下一页</a></li>
+                                            </c:if>
+                                        </ul>
                                     </div>
                                 </div>
+                                <hr>
 
-                                <div class="am-form-group">
-                                    <label for="user-email" class="am-u-sm-3 am-form-label">请选择问题</label>
-                                    <div class="am-u-sm-9">
-                                        <select data-am-selected="">
-  <option value="a">-The.CC</option>
-  <option value="b">夕风色</option>
-  <option value="o">Orange</option>
-</select>
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">答案</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="tel" id="user-phone" placeholder=" 请输入答案 ">
-                                    </div>
-                                </div>
-                                                                                          
-
-                                <div class="am-form-group">
-                                    <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary">保存修改</button>
-                                    </div>
-                                </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
+                <div class="tpl-alert"></div>
             </div>
         </div>
     </div>
@@ -264,4 +302,5 @@
     <script src="js/amazeui.min.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>

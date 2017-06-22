@@ -10,4 +10,5 @@ public interface OrderService {
 	boolean deleteFromOrder(Order order);
 	List<Order> getAllOrders();
 	PageModel<Order> getOrdersByPage(int page, int size);
+	PageModel<Order> getOrdersByPageUser(int page, int size,int userid);
 }

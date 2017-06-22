@@ -32,4 +32,7 @@ public interface BaseDao <E, K extends Serializable>{
 	PageModel<E> findByPage(int page, int size);
 	
 	PageModel<E> findByPage(int page, int size, String idName);
+	
+	PageModel<E> findByPageUser(int page, int size, int userid);
+	
 }

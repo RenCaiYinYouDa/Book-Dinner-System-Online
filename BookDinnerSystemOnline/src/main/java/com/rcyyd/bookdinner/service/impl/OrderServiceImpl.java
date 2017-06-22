@@ -40,4 +40,10 @@ public class OrderServiceImpl implements OrderService{
 		return pm;
 	}
 	
+	@Override
+	public PageModel<Order> getOrdersByPageUser(int page, int size,int userid) {
+		PageModel<Order> pm = orderDao.findByPageUser(page, size, userid);
+		return pm;
+	}
+	
 }

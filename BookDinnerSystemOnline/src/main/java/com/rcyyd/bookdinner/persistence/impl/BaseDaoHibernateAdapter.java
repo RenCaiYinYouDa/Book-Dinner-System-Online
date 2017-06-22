@@ -98,5 +98,19 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 		return sessionFactory.getCurrentSession()
 				.createQuery("from " + entityTypeName + " as e where e."+colName+" = "+keyword).getResultList();
 	} 
+	
+	
+	@Override
+	public PageModel<E> findByPageUser(int page, int size, int userid) {
+		List<E> dataList = sessionFactory.getCurrentSession()
+				.createQuery("from " + entityTypeName + " as  o where o.userid="+userid+"order by o." + "orderid" + " desc")
+				.setFirstResult((page - 1) * size).setMaxResults(size)
+				.getResultList();
+		int totalCount = sessionFactory.getCurrentSession()
+				.createQuery("select count(o) from " + entityTypeName + " as o", Long.class)
+				.getSingleResult().intValue();
+		int totalPage = (totalCount - 1) / size + 1;
+		return new PageModel<>(dataList, page, size, totalPage);
+	}
 
 }
