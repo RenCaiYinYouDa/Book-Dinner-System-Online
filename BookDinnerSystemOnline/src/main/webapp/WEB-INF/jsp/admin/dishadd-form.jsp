@@ -232,7 +232,7 @@
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">简介 <span class="tpl-form-line-small-title">Brief</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="pubdate" class="am-form-field tpl-form-no-bg" placeholder="商品简介"/>
+                                        <input type="text" name="brief" class="am-form-field tpl-form-no-bg" placeholder="商品简介"/>
                                         <small>简介为选填</small>
                                     </div>
                                 </div>

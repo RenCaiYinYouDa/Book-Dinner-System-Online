@@ -72,7 +72,7 @@ public class AdminController {
 	}
 	
 	@PostMapping("admin/saveDish")
-	public String toSaveDish(String dishname, MultipartFile image, Integer price, HttpServletRequest req) throws IOException{
+	public String toSaveDish(String dishname, String brief, MultipartFile image, Integer price, HttpServletRequest req) throws IOException{
 		String photoPath = req.getServletContext().getRealPath("/dishimg");
 		String photoFilename = image.getOriginalFilename();
 		String photoSuffix = CommonUtil.getSuffix(photoFilename);
@@ -86,6 +86,7 @@ public class AdminController {
 		dish.setImage(newPhotoFilename);
 		dish.setPrice(price);
 		dish.setTypeid(0); //≤‚ ‘
+		dish.setBrief(brief);
 		dishService.publishDish(dish);
 		return "redirect: showDishes";
 	}
