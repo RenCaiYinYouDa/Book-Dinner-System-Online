@@ -32,4 +32,10 @@ public class SecurityServiceImpl implements SecurityService {
 		securityDao.update(security);
 		return true;
 	}
+
+	@Override
+	public Security getSecurityById(Integer id) {
+		// TODO Auto-generated method stub
+		return securityDao.findById(id);
+	}
 }
