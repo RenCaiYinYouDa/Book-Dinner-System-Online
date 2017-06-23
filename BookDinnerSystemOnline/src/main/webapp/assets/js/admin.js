@@ -4,7 +4,6 @@
 $(document).ready(function(){
 	$('#statusSelection').change(function(){
 		var status = $(this).children('option:selected').val();
-		$.get("showOrders?type=" + status);
 		location.href = "showOrders?type=" + status;
 	});
 	$('.acceptBtn').click(function(){
@@ -22,10 +21,7 @@ $(document).ready(function(){
 			page = 1;
 		}
 		var url = 'updateOrderStatus?page=' + page + '&type=' + status + '&orderid=' + orderid + '&ordernum=' + ordernum + '&statusid=' + 1 + '&userid=' + userid + '&addrid=' + addrid + '&date=' + date;
-		$.get(url);
-		window.onload = function(){
-			window.location.reload();
-		}
+		location.href = url;
 	});
 	$('.rejectBtn').click(function(){
 		//得到当前所在行
@@ -42,10 +38,7 @@ $(document).ready(function(){
 			page = 1;
 		}
 		var url = 'updateOrderStatus?page=' + page + '&type=' + status + '&orderid=' + orderid + '&ordernum=' + ordernum + '&statusid=' + 2 + '&userid=' + userid + '&addrid=' + addrid + '&date=' + date;
-		$.get(url);
-		window.onload = function(){
-			window.location.reload();
-		}
+		location.href = url;
 	});
 	$('.editBtn').click(function(){
 		var text = $(this).parents('.tpl-table-images-content').find('.dishid').text();
@@ -54,7 +47,9 @@ $(document).ready(function(){
 		location.href = url;
 	});
 	$('.deleteBtn').click(function(){
-		
+		var text = $(this).parents('.tpl-table-images-content').find('.dishid').text();
+		var url = 'deleteDish?dishid=' + text;
+		location.href = url;
 	});
 });
 

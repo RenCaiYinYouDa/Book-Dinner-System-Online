@@ -7,4 +7,6 @@ public interface DishService {
 	PageModel<Dish> getDishesByPage(int page, int size);
 	boolean publishDish(Dish dish);
 	Dish getDishByid(int id);
+	boolean deleteDish(Dish dish);
+	boolean updateDish(Dish dish);
 }

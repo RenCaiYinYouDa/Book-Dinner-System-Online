@@ -221,7 +221,20 @@
                 <div class="tpl-block">
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form" action="saveDish" method="post" enctype="multipart/form-data">
+                        	<c:choose>
+                        		<c:when test="${not empty dishid}">
+                        			<form class="am-form tpl-form-line-form" action="updateDish" method="post" enctype="multipart/form-data">
+                        			<div class="am-form-group">
+                                    	<label for="user-name" class="am-u-sm-3 am-form-label">商品编号 <span class="tpl-form-line-small-title">ID</span></label>
+                                    	<div class="am-u-sm-9">
+                                    		<input type="text" name="dishid" class="tpl-form-input" id="user-name" value="${dishid}" readonly>      
+                                    	</div>
+                                	</div>
+                        		</c:when>
+                        		<c:otherwise>
+                                	<form class="am-form tpl-form-line-form" action="saveDish" method="post" enctype="multipart/form-data">
+                              	</c:otherwise>
+                        	</c:choose>
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">商品名 <span class="tpl-form-line-small-title">Title</span></label>
                                     <div class="am-u-sm-9">
@@ -253,13 +266,13 @@
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">图片<span class="tpl-form-line-small-title">Images</span></label>
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">图片 <span class="tpl-form-line-small-title">Images</span></label>
                                     <div class="am-u-sm-9">
                                         <div class="am-form-group am-form-file">
                                             <div class="tpl-form-file-img">
                                             	<c:choose>
                                     				<c:when test="${not empty dishimg}">
-                                    					<img src="../assets/img/${dishimg}" alt="" id="dishimg">   
+                                    					<img src="../dishimg/${dishimg}" alt="" id="dishimg">   
                                     				</c:when>
                                     				<c:otherwise>    
                                     					<img src="../assets/img/a5.png" alt="" id="dishimg">
@@ -291,7 +304,14 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                               			<c:choose>
+                        					<c:when test="${not empty dishid}">
+                        						<button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">更新</button>
+                        					</c:when>
+                        					<c:otherwise>
+                                        		<button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                    		</c:otherwise>
+                                    	</c:choose>
                                     </div>
                                 </div>
                             </form>

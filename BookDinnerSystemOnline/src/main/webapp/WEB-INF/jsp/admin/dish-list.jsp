@@ -288,10 +288,10 @@
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
                                             <c:if test="${dishcurrentPage > 1}">
-                                            <li class="am-active"><a href="showOrders?page=${dishcurrentPage - 1}">上一页</a></li>
+                                            <li class="am-active"><a href="showDishes?page=${dishcurrentPage - 1}">上一页</a></li>
                                             </c:if>
                                             <c:if test="${dishcurrentPage < dishtotalPage}">
-                                            <li class="am-active"><a href="showOrders?page=${dishcurrentPage + 1}">下一页</a></li>
+                                            <li class="am-active"><a href="showDishes?page=${dishcurrentPage + 1}">下一页</a></li>
                                             </c:if>
                                         </ul>
                                     </div>
