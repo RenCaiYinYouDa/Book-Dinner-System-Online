@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.rcyyd.bookdinner.domain.ComUser;
 import com.rcyyd.bookdinner.domain.Comment;
+import com.rcyyd.bookdinner.domain.Security;
 import com.rcyyd.bookdinner.service.ComUserService;
 import com.rcyyd.bookdinner.service.CommentService;
+import com.rcyyd.bookdinner.service.SecurityService;
 
 @Controller
 public class ComUserController {
@@ -25,20 +27,8 @@ public class ComUserController {
 
 	@Autowired
 	CommentService commentService;
-
-	@GetMapping(value = "/user/{username}", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String getComUser(@PathVariable String username) {
-		ComUser user = (ComUser) comUserService.getUserByUsername(username);
-		return JSON.toJSONString(user);
-	}
-
-	@PostMapping("/user")
-	@ResponseBody
-	public String addComUser(ComUser user) {
-		boolean flag = comUserService.register(user);
-		return flag ? "Success" : "Failed";
-	}
+	
+	SecurityService securityService;
 
 	@PutMapping("/user/{username}")
 	@ResponseBody
@@ -67,8 +57,9 @@ public class ComUserController {
 
 	@PostMapping("/comreg")
 	public String doRegister(ComUser user, Model model) {
+		Security security = securityService.getSecurityByKey(user.getSecurity().getSecurity());
 		if (comUserService.register(user)) {
-			return "redirect: toLogin";
+			return "redirect: login";
 		} else {
 			model.addAttribute("hint", "注册失败请尝试不同的用户名!");
 			return "register";

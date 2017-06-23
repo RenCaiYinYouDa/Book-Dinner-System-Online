@@ -38,4 +38,10 @@ public class SecurityServiceImpl implements SecurityService {
 		// TODO Auto-generated method stub
 		return securityDao.findById(id);
 	}
+
+	@Override
+	public Security getSecurityByKey(String keyword) {
+		// TODO Auto-generated method stub
+		return securityDao.findByKey(keyword, "security").get(0);
+	}
 }

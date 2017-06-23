@@ -7,4 +7,5 @@ public interface SecurityService {
 	boolean deleteFromSecurity(Security security);
 	boolean changeSecurity(Security security);
 	Security getSecurityById(Integer id);
+	Security getSecurityByKey(String keyword);
 }
