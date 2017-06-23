@@ -12,7 +12,5 @@ public interface ComUserService extends UserService{
 	
 	boolean publishComment(Comment comment);
 
-	ComUser getUserByComUsername(String username);
-
 	boolean editComUser(ComUser user);
 }

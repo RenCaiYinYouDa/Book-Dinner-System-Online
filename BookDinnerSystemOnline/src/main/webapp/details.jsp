@@ -14,7 +14,7 @@
   </head>
   
   <body>
-   <table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
+   <table width= "95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
 			<tr>
 				<td height="101">
 					<img src="img/zr1.jpg" width="70" height="50" style="border-radius: 10%;margin-left: 150px;"/>
@@ -40,7 +40,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" width="80%">
+				<td valign="top" width="100%">
 					<br />
 					</div>
 					<div style="background-color:#FFCC99; font-size: 40px;" align="center">
@@ -51,13 +51,18 @@
 					<table width: 100% border="0" cellspacing="0" cellpadding="3">
 						<tr>
 							<td width="148">
-								<img src="mealimages/500047.jpg" width="500" height="450" />
+								<img src="images/25.jpg" width="500" height="450" />
 							</td>
-							<td width="268" valign="top">
+							<td style="width: 700px" valign="top">
 								<br />
-								<span style="font-size: 20px;"> 详细资料:
+								<span style="font-size: 20px;"> 详细资料:</span>
 								<br />
-								<span style="font-size: 20px;"> &nbsp;&nbsp; &nbsp;&nbsp; 皮蛋瘦肉粥
+								<span style="font-size: 20px;"> &nbsp;&nbsp; &nbsp;&nbsp;
+								 鲜榨草莓汁系统使用说明										
+								本查询系统的信息来源于各高校招生网对外公开的数据，中国教育在线提供此信息之目的在于
+								为高考生提供更多的信息作为参考,请综合各种信息进行报考	
+								如对本系统有任何疑问请联系我们，欢迎更多招生单位及教育机构与我们合作，
+								联系电话:010-62603709</span>
 								<br />
 								
 							</td>
@@ -84,6 +89,24 @@
 				<td colspan="2" align="center">
 					<br>
 					<hr width=100%>					
+				</td>
+			</tr>
+		</table>
+		<table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
+			<tr>
+			<td>
+				<span style="font-size: 20px;"> 评论：
+				</span>
+			</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<span style="font-size: 15px;"> 用户名：
+					</span>
+				</td>
+				<td>
+					<span style="font-size: 15px;"> 好吃，好吃，好吃，好吃，
+					</span>
 				</td>
 			</tr>
 		</table>

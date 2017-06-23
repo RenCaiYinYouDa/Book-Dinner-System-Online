@@ -39,7 +39,7 @@ public class AdmUserServiceImpl implements AdmUserService{
 	}
 
 	@Override
-	public AdmUser getUserByAdmUsername(String username) {
+	public AdmUser getUserByUsername(String username) {
 		List<AdmUser> us = userDao.findByKey(username, "username");
 		if (us != null) {
 			return us.get(0);

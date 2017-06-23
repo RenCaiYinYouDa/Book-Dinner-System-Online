@@ -55,7 +55,7 @@ public class ComUserServiceImpl implements ComUserService{
 	}
 
 	@Override
-	public ComUser getUserByComUsername(String username) {
+	public ComUser getUserByUsername(String username) {
 		List<ComUser> us = userDao.findByKey(username, "username");
 		if (us != null) {
 			return us.get(0);

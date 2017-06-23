@@ -27,12 +27,12 @@
 					<s:if test="#">
 						
 					    <div class="container">
-					      <form id="loginForm" class="form-signin" action="../comlogin" method="POST">
+					      <form id="loginForm" class="form-signin" action="comlogin" method="POST">
 					        <h3 class="form-signin-heading">用户登录</h3>
 					        <label for="loginName" class="sr-only">请输入用户名</label>					        
-					        <input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" required autofocus>
+					        <input type="text" id="username" name="username" class="form-control" placeholder="请输入用户名" required autofocus>
 					        <label for="password" class="sr-only">请输入密码</label>
-					        <input type="password" id="password"  name="loginPwd" class="form-control" placeholder="请输入密码" required>
+					        <input type="password" id="password"  name="password" class="form-control" placeholder="请输入密码" required>
 					       
 					        <div class="checkbox">
 					          <label>
