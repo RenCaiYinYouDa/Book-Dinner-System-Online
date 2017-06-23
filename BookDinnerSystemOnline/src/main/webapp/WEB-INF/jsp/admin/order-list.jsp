@@ -231,19 +231,47 @@
                     <div class="am-g">
                         <div class="am-u-sm-12 am-u-md-3">
                             <div class="am-form-group">
-                                <select data-am-selected="{btnSize: 'sm'}">
-              						<option value="option1">所有类别</option>
-              						<option value="option2">已接单</option>
-              						<option value="option3">未接单</option>
-              						<option value="option4">已拒绝</option>
-            					</select>
+                                <select id="statusSelection" data-am-selected="{btnSize: 'sm'}">
+                                <c:choose>
+                                	<c:when test="${status == -1}">
+                                		<option value="-1" selected>所有类别</option>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<option value="-1">所有类别</option>
+                                	</c:otherwise>
+                                </c:choose>
+                                <c:choose>
+                                	<c:when test="${status == 1}">
+                                		<option value="1" selected>已接单</option>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<option value="1">已接单</option>
+                                	</c:otherwise>
+                                </c:choose>
+                                <c:choose>
+                                	<c:when test="${status == 0}">
+                                		<option value="0" selected>未接单</option>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<option value="0">未接单</option>
+                                	</c:otherwise>
+                                </c:choose>
+                                <c:choose>
+                                	<c:when test="${status == 2}">
+                                		<option value="2" selected>已拒绝</option>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<option value="2">已拒绝</option>
+                                	</c:otherwise>
+                                </c:choose>
+                            	</select>
                             </div>
                         </div>
                     </div>
                     <div class="am-g">
                         <div class="am-u-sm-12">
                             <form class="am-form">
-                                <table class="am-table am-table-striped am-table-hover table-main">
+                                <table class="am-table am-table-striped am-table-hover table-main" id="orderTable">
                                     <thead>
                                         <tr>
                                             <th class="table-check"><input type="checkbox" class="tpl-table-fz-check"></th>
@@ -251,24 +279,26 @@
                                             <th class="table-title">订单号</th>
                                             <th class="table-type">状态</th>
                                             <th class="table-author am-hide-sm-only">作者</th>
+                                            <th class="table-author am-hide-sm-only">地址</th>
                                             <th class="table-date am-hide-sm-only">修改日期</th>
                                             <th class="table-set">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	<c:forEach items="${orderList}" var="order" varStatus="status">
+                                    	<c:forEach items="${orderList}" var="order">
                                     		<tr>
                                             <td><input type="checkbox"></td>
-                                            <td>${status.index+1}</td>
+                                            <td>${order.orderid}</td>
                                             <td><a href="#">${order.ordernum}</a></td>
                                             <td>${order.statusid}</td>
                                             <td class="am-hide-sm-only">${order.userid}</td>
+                                            <td class="am-hide-sm-only">${order.addrid}</td>
                                             <td class="am-hide-sm-only">${order.date}</td>
                                             <td>
                                                 <div class="am-btn-toolbar">
                                                     <div class="am-btn-group am-btn-group-xs">
-                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 接单</button>
-                                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 拒单</button>
+                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary acceptBtn"><span class="am-icon-pencil-square-o"></span> 接单</button>
+                                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only rejectBtn"><span class="am-icon-copy"></span> 拒单</button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -285,10 +315,10 @@
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
                                         	<c:if test="${currentPage > 1}">
-                                            <li class="am-active"><a href="showOrders?page=${currentPage - 1}">上一页</a></li>
+                                            <li class="am-active"><a href="showOrders?page=${currentPage - 1}&type=${status}">上一页</a></li>
                                             </c:if>
                                             <c:if test="${currentPage < totalPage}">
-                                            <li class="am-active"><a href="showOrders?page=${currentPage + 1}">下一页</a></li>
+                                            <li class="am-active"><a href="showOrders?page=${currentPage + 1}&type=${status}">下一页</a></li>
                                             </c:if>
                                         </ul>
                                     </div>
@@ -307,5 +337,6 @@
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.min.js"></script>
     <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/admin.js"></script>
 </body>
 </html>

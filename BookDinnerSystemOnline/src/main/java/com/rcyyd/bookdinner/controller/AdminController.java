@@ -2,11 +2,13 @@ package com.rcyyd.bookdinner.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,17 +30,21 @@ public class AdminController {
 	private DishService dishService;
 	
 	@GetMapping("admin/showOrders")
-	public String toShowOrders(Integer page, Integer size, Model model){
+	public String toShowOrders(Integer page, Integer size, Integer type, Model model){
+		if (type == null){
+			type = -1;
+		}
 		if (page == null){
 			page = 1;
 		}
 		if (size == null){
 			size = 10;
 		}
-		PageModel<Order> pm = orderService.getOrdersByPage(page, size);
+		PageModel<Order> pm = orderService.getOrdersByStatus(page, size, type);
 		model.addAttribute("orderList", pm.getDataList());
 		model.addAttribute("currentPage", pm.getCurrentPage());
 		model.addAttribute("totalPage", pm.getTotalPage());
+		model.addAttribute("status", type);
 		return "admin/order-list";
 	}
 	
@@ -52,8 +58,8 @@ public class AdminController {
 		}
 		PageModel<Dish> pm = dishService.getDishesByPage(page, size);
 		model.addAttribute("dishList", pm.getDataList());
-		model.addAttribute("currentPage", pm.getCurrentPage());
-		model.addAttribute("totalPage", pm.getTotalPage());
+		model.addAttribute("dishcurrentPage", pm.getCurrentPage());
+		model.addAttribute("dishtotalPage", pm.getTotalPage());
 		return "admin/dish-list";
 	}
 	
@@ -89,5 +95,28 @@ public class AdminController {
 		dish.setBrief(brief);
 		dishService.publishDish(dish);
 		return "redirect: showDishes";
+	}
+	
+	@GetMapping("admin/updateOrderStatus")
+	public String toUpdateOrderStatus(Integer orderid, String ordernum, Integer statusid, Integer userid, Integer addrid, String date, Integer page, Integer type){
+		Order order = new Order();
+		order.setOrderid(orderid);
+		order.setOrdernum(ordernum);
+		order.setStatusid(statusid);
+		order.setUserid(userid);
+		order.setAddrid(addrid);
+		order.setDate(new Date());
+		orderService.updateOrder(order);
+		return "redirect: showOrders?type=" + type;
+	}
+	
+	@GetMapping("admin/updateDish")
+	public String toUpdateDish(Integer dishid, Model model){
+		Dish dish = dishService.getDishByid(dishid);
+		model.addAttribute("dishname", dish.getDishname());
+		model.addAttribute("dishprice", dish.getPrice());
+		model.addAttribute("dishimg", dish.getImage());
+		model.addAttribute("dishbrief", dish.getBrief());
+		return "admin/dishadd-form";
 	}
 }

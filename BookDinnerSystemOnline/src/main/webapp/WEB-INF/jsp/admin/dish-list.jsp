@@ -260,7 +260,8 @@
                         	<div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
                                 <div class="tpl-table-images-content">
                                     <div class="tpl-i-title">
-                                        ${dish.dishname}&nbsp;&nbsp;
+                                    	<span class='dishid'>${dish.dishid}</span>
+                                        &nbsp;&nbsp;${dish.dishname}&nbsp;&nbsp;
                                         ${dish.brief}
                                     </div>
                                     <a href="javascript:;" class="tpl-table-images-content-i">
@@ -273,8 +274,8 @@
                                         </div>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
-                                                <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-edit"></span> 编辑</button>
-                                                <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-secondary editBtn"><span class="am-icon-edit"></span> 编辑</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-danger deleteBtn"><span class="am-icon-trash-o"></span> 删除</button>
                                             </div>
                                         </div>
                                     </div>
@@ -286,11 +287,11 @@
                                 <div class="am-cf">
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
-                                            <c:if test="${currentPage > 1}">
-                                            <li class="am-active"><a href="showOrders?page=${currentPage - 1}">上一页</a></li>
+                                            <c:if test="${dishcurrentPage > 1}">
+                                            <li class="am-active"><a href="showOrders?page=${dishcurrentPage - 1}">上一页</a></li>
                                             </c:if>
-                                            <c:if test="${currentPage < totalPage}">
-                                            <li class="am-active"><a href="showOrders?page=${currentPage + 1}">下一页</a></li>
+                                            <c:if test="${dishcurrentPage < dishtotalPage}">
+                                            <li class="am-active"><a href="showOrders?page=${dishcurrentPage + 1}">下一页</a></li>
                                             </c:if>
                                         </ul>
                                     </div>
@@ -310,5 +311,6 @@
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.min.js"></script>
     <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/admin.js"></script>
 </body>
 </html>

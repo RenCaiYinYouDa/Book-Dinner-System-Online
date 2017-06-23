@@ -99,7 +99,6 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 				.createQuery("from " + entityTypeName + " as e where e."+colName+" = "+keyword).getResultList();
 	} 
 	
-	
 	@Override
 	public PageModel<E> findByPageUser(int page, int size, int userid) {
 		List<E> dataList = sessionFactory.getCurrentSession()
@@ -112,5 +111,36 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 		int totalPage = (totalCount - 1) / size + 1;
 		return new PageModel<>(dataList, page, size, totalPage);
 	}
-
+	
+	@Override
+	public PageModel<E> findByPageAsc(int page, int size, String idName) {
+		List<E> dataList = sessionFactory.getCurrentSession()
+				.createQuery("from " + entityTypeName + " as  o order by o." + idName)
+				.setFirstResult((page - 1) * size).setMaxResults(size)
+				.getResultList();
+		int totalCount = sessionFactory.getCurrentSession()
+				.createQuery("select count(o) from " + entityTypeName + " as o", Long.class)
+				.getSingleResult().intValue();
+		int totalPage = (totalCount - 1) / size + 1;
+		return new PageModel<>(dataList, page, size, totalPage);
+	}
+	
+	@Override
+	public PageModel<E> findByOrderStatus(int page, int size, int type) {
+		if (type == -1){
+			return findByPageAsc(page, size, "orderid");
+		}else{
+			List<E> dataList = sessionFactory.getCurrentSession()
+					.createQuery("from " + entityTypeName + " as  o where o.statusid="+type+"order by o." + "orderid")
+					.setFirstResult((page - 1) * size).setMaxResults(size)
+					.getResultList();
+			int totalCount = sessionFactory.getCurrentSession()
+					.createQuery("select count(o) from " + entityTypeName + " as o where o.statusid=" + type, Long.class)
+					.getSingleResult().intValue();
+			int totalPage = (totalCount - 1) / size + 1;
+			return new PageModel<>(dataList, page, size, totalPage);
+		}
+		
+		
+	}
 }

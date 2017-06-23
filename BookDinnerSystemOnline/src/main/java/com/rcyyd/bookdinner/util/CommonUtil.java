@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -104,5 +105,16 @@ public final class CommonUtil {
 	public static String getMd5Filename(InputStream input, String suffix) throws IOException {
 		String md5 = DigestUtils.md5Hex(input);
 		return md5 + (suffix != null ? suffix : "");
+	}
+	
+	public static Date stringToDate(String s) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+		Date date = null;
+		try {
+			date = sdf.parse(s);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
 	}
 }
