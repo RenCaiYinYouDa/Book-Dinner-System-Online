@@ -29,7 +29,7 @@ public class ComUserController {
 	@GetMapping(value = "/user/{username}", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String getComUser(@PathVariable String username) {
-		ComUser user = comUserService.getUserByComUsername(username);
+		ComUser user = (ComUser) comUserService.getUserByUsername(username);
 		return JSON.toJSONString(user);
 	}
 
