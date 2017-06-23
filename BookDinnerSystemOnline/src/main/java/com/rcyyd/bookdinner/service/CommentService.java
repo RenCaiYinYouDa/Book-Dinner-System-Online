@@ -1,5 +1,9 @@
 package com.rcyyd.bookdinner.service;
 
-public interface CommentService {
+import java.util.List;
 
+import com.rcyyd.bookdinner.domain.Comment;
+
+public interface CommentService {
+	List<Comment> getAllComment();
 }
