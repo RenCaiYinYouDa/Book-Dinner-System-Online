@@ -45,5 +45,17 @@ public class OrderServiceImpl implements OrderService{
 		PageModel<Order> pm = orderDao.findByPageUser(page, size, userid);
 		return pm;
 	}
+
+	@Override
+	public PageModel<Order> getOrdersByStatus(int page, int size, int status) {
+		PageModel<Order> pm = orderDao.findByOrderStatus(page, size, status);
+		return pm;
+	}
+
+	@Override
+	public boolean updateOrder(Order order) {
+		orderDao.update(order);
+		return true;
+	}
 	
 }

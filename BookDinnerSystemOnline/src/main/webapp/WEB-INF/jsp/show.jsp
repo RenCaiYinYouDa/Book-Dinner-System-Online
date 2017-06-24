@@ -64,6 +64,7 @@
 						</c:forEach>
 						<!-- 菜系循环结束 -->
 				</td>
+				
 				<td valign="top" width="80%">
 					<br />
 					<div align="right">
@@ -79,24 +80,23 @@
 					<br />
 					
 					<table cellpadding="5" cellspacing="1" style="font-size: 12px;">
-						<c:forEach items="${dishList }" var="item">
-						<tr>
+						<!-- 餐品循环开始   一行显示三个菜，需要加判断换行 -->
+						<s:iterator id="mealItem" value="#request.mealList" status="st">
 							<td>
-								<a href="#"><img src="mealimages/${item.image }" width="148" height="126" border="0" /> </a>
+								<a href="#"><img src="mealimages/${mealItem.mealImage }" width="148" height="126" border="0" /> </a>
 							</td>
 							<td>
 								<div>
-									<p style="font-size: 17px;">${item.dishid } : ${item.dishname }<br /></p>
+									<p style="font-size: 17px;">0001 : 粉蒸排骨<br /></p>
 									<span calss="detailMargin" style="text-decoration: line-through; color: gray;">
-										原价：人民币${item.price }元
+										原价：人民币25.00元
 									</span>
-									<p calss="detailMargin" style="font-size:15px;">现价：人民币${item.price*0.8 } 元</p>
+									<p calss="detailMargin" style="font-size:15px;">现价：人民币 23.00 元</p>
 								</div>
-								<a href="details.jsp"><img src="img/detail_cn.gif" border="0" width="60" height="20" /></a>
+								<a href="#"><img src="img/detail_cn.gif" border="0" width="60" height="20" /></a>
 								<a href="#"><img src="img/buy_cn.gif" border="0" width="60" height="20" /></a>
 							</td>
-						</tr>
-						</c:forEach>
+						</s:iterator>
 						
 						<!-- 餐品循环结束 -->
 

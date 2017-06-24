@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -220,11 +221,31 @@
                 <div class="tpl-block">
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form" action="saveDish" method="post" enctype="multipart/form-data">
+                        	<c:choose>
+                        		<c:when test="${not empty dishid}">
+                        			<form class="am-form tpl-form-line-form" action="updateDish" method="post" enctype="multipart/form-data">
+                        			<div class="am-form-group">
+                                    	<label for="user-name" class="am-u-sm-3 am-form-label">商品编号 <span class="tpl-form-line-small-title">ID</span></label>
+                                    	<div class="am-u-sm-9">
+                                    		<input type="text" name="dishid" class="tpl-form-input" id="user-name" value="${dishid}" readonly>      
+                                    	</div>
+                                	</div>
+                        		</c:when>
+                        		<c:otherwise>
+                                	<form class="am-form tpl-form-line-form" action="saveDish" method="post" enctype="multipart/form-data">
+                              	</c:otherwise>
+                        	</c:choose>
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">商品名 <span class="tpl-form-line-small-title">Title</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="dishname" class="tpl-form-input" id="user-name" placeholder="请输入标题文字">
+                                    	<c:choose>
+                                    		<c:when test="${not empty dishname}">
+                                    			<input type="text" name="dishname" class="tpl-form-input" id="user-name" value="${dishname}" placeholder="请输入标题文字">      
+                                    		</c:when>
+                                    		<c:otherwise>
+                                    			<input type="text" name="dishname" class="tpl-form-input" id="user-name" placeholder="请输入标题文字">      
+                                    		</c:otherwise>
+                                    	</c:choose>
                                         <small>请填写商品名10-20字左右。</small>
                                     </div>
                                 </div>
@@ -232,21 +253,35 @@
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">简介 <span class="tpl-form-line-small-title">Brief</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="brief" class="am-form-field tpl-form-no-bg" placeholder="商品简介"/>
+                                    	<c:choose>
+                                    		<c:when test="${not empty dishbrief}">
+                                    			<input type="text" name="brief" class="am-form-field tpl-form-no-bg" value="${dishbrief}" placeholder="商品简介"/>    
+                                    		</c:when>
+                                    		<c:otherwise>    
+                                    			<input type="text" name="brief" class="am-form-field tpl-form-no-bg" placeholder="商品简介"/>
+                                    		</c:otherwise>
+                                    	</c:choose>
                                         <small>简介为选填</small>
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">图片<span class="tpl-form-line-small-title">Images</span></label>
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">图片 <span class="tpl-form-line-small-title">Images</span></label>
                                     <div class="am-u-sm-9">
                                         <div class="am-form-group am-form-file">
                                             <div class="tpl-form-file-img">
-                                                <img src="../assets/img/a5.png" alt="">
+                                            	<c:choose>
+                                    				<c:when test="${not empty dishimg}">
+                                    					<img src="../dishimg/${dishimg}" alt="" id="dishimg">   
+                                    				</c:when>
+                                    				<c:otherwise>    
+                                    					<img src="../assets/img/a5.png" alt="" id="dishimg">
+                                    				</c:otherwise>
+                                    			</c:choose>
                                             </div>
                                             <button type="button" class="am-btn am-btn-danger am-btn-sm">
     <i class="am-icon-cloud-upload"></i> 添加图片</button>
-                                            <input id="doc-form-file" name="image" type="file" multiple>
+                                            <input id="doc-form-file" name="image" type="file" onchange="imgChange()" multiple>
                                         </div>
 
                                     </div>
@@ -255,13 +290,28 @@
                                 <div class="am-form-group">
                                     <label for="user-weibo" class="am-u-sm-3 am-form-label">价格 <span class="tpl-form-line-small-title">Price</span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" name="price" id="user-weibo" placeholder="请输入商品价格">
+                                   		<c:choose>
+                                    		<c:when test="${not empty dishprice}">
+                                    			<input type="text" name="price" id="user-weibo" value="${dishprice}" placeholder="请输入商品价格">  
+                                    		</c:when>
+                                    		<c:otherwise>    
+                                    			<input type="text" name="price" id="user-weibo" placeholder="请输入商品价格">
+                                    		</c:otherwise>
+                                    	</c:choose>
+                                        
                                     </div>
                                 </div>
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                               			<c:choose>
+                        					<c:when test="${not empty dishid}">
+                        						<button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">更新</button>
+                        					</c:when>
+                        					<c:otherwise>
+                                        		<button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                    		</c:otherwise>
+                                    	</c:choose>
                                     </div>
                                 </div>
                             </form>
@@ -281,5 +331,6 @@
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/amazeui.min.js"></script>
     <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/admin.js"></script>
 </body>
 </html>

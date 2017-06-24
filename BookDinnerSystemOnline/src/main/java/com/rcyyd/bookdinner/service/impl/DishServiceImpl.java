@@ -29,4 +29,21 @@ public class DishServiceImpl implements DishService {
 		return true;
 	}
 
+	@Override
+	public Dish getDishByid(int id) {
+		return dishDao.findById(id);
+	}
+
+	@Override
+	public boolean deleteDish(Dish dish) {
+		dishDao.delete(dish);
+		return true;
+	}
+
+	@Override
+	public boolean updateDish(Dish dish) {
+		dishDao.update(dish);
+		return true;
+	}
+
 }
