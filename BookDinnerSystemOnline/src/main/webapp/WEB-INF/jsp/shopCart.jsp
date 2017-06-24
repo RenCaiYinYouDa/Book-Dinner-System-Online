@@ -53,7 +53,7 @@
 							<c:forEach items="${cartList}" var="cart" varStatus="status">
 								<tr style="background-color:#FFFFFF;">
 									<td>
-										${status.index}
+										${status.index+1}
 									</td>
 									<td>
 										${cart.dishid}
@@ -63,13 +63,13 @@
 									</td>
 									<td>								
 										<input type="text"  value="${cart.count}" size="10" 
-										onchange="window.location='updateSelectedQuantity?mealId=${value.meal.mealId}&quantity='+this.value;">
+										onchange="window.location='changeCartCount?dishid=${cart.dishid}&userid=${cart.userid}&count='+this.value;">
 									</td>
 									<td>
 										￥<s:property value="value.quantity*value.meal.mealPrice"/>
 									</td>
 									<td>
-										<a href="deleteSelectedOrders?mealId=${value.meal.mealId}">删除</a>
+										<a href="deleteCart?dishid=${cart.dishid}&userid=${cart.userid}">删除</a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -107,7 +107,7 @@
 									<a href="/Restrant/toShowMeal">继续购物</a>
 								</td>
 								<td>
-									<a href="/Restrant/addOrders">生成订单</a>
+									<a href="generateOrder?userid=1">生成订单</a>
 								</td>
 							</tr>
 						</table>

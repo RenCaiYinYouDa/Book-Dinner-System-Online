@@ -141,10 +141,10 @@ create table tb_order
 /*==============================================================*/
 create table tb_order_dish
 (
-   orderid              integer not null,
+   ordernum              char(200) not null,
    dishid               integer not null,
    count                integer not null,
-   primary key (orderid, dishid)
+   primary key (ordernum, dishid)
 );
 
 /*==============================================================*/
