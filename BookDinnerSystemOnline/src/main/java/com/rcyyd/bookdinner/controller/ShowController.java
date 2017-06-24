@@ -2,6 +2,7 @@ package com.rcyyd.bookdinner.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,44 +15,51 @@ import com.rcyyd.bookdinner.service.DishService;
 import com.rcyyd.bookdinner.service.DishtypeService;
 
 /**
- * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ò³
+ * ³õÊ¼»¯ÏÔÊ¾Ê×Ò³
  * 
- * @author ï¿½ï¿½ï¿½ï¿½
+ * @author ÖÜÈñ
  *
  */
 @Controller
-public class ShowController {
-
+public class ShowController{
+	
 	@Autowired
 	DishService dishService;
-
+	
 	@Autowired
 	DishtypeService dishTypeService;
-
-	@GetMapping("/dishPage")
-	public void getdishPageModel(Integer page, Integer size, Model model) {
-		if (page == null)
-			page = 1;
-		if (size == null)
-			size = 6;
+	
+	/**
+	 * ³õÊ¼»¯Ò³Ãæ
+	 * @return
+	 */
+	@GetMapping("indexShow")
+	public String initShow(Integer page, Integer size, Model model) {
+		if (page == null) page = 1;
+		if (size == null) size = 6;
 		PageModel<Dish> pm = dishService.getDishesByPage(page, size);
 		model.addAttribute("dishList", pm.getDataList());
 		model.addAttribute("currentPage", pm.getCurrentPage());
 		model.addAttribute("totalPage", pm.getTotalPage());
-	}
-
-	/**
-	 * ï¿½ï¿½Ê¼ï¿½ï¿½Ò³ï¿½ï¿½
-	 * 
-	 * @return
-	 */
-	@GetMapping("indexShow")
-	public String initShow(Model model) {
-		getdishPageModel(1, 6, model);
 		List<Dishtype> typeList = dishTypeService.getAllTypes();
-		System.out.println("**************" + typeList.size());
 		model.addAttribute("typeList", typeList);
+		
 		return "show";
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
