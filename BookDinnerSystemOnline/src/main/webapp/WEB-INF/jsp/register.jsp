@@ -70,10 +70,10 @@ class="form-control" placeholder="请输入密码" required>
 
 control" placeholder="请输入电子邮件" required>
 				        <label for="user.trueName" class="sr-only">密保问题：</label>
-				        <select name="security.security">
-							<option value="aa">aa</option> 
-							<option value="bb">bb</option> 
-							<option value="cc">cc</option> 
+				        <select name="securityid">
+							<option value="1">aa</option> 
+							<option value="2">bb</option> 
+							<option value="3">cc</option> 
 						</select> 
 				        <label for="user.trueName" class="sr-only">密保答案：</label>
 				        <input type="text" id="user.trueName"  name="key" class="form-
@@ -87,12 +87,10 @@ control" placeholder="请输入密保答案" required>
 服务条款"</a>和<a href="">"隐私权相关政策"</a>
 				          </label>
 				        </div>
-				        <button class="btn btn-lg btn-primary btn-block" type="submit">注册
-
-</button>
+				        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 				      </form>
 				      <div style="margin:0 auto; max-width:330px; padding: 20px 20px;">
-				      	<a href="login.jsp">返回登录</a>
+				      	<a href="toLog">返回登录</a>
 				      </div>
 				    </div>			    
 								    

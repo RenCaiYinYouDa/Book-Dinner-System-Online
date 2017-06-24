@@ -28,6 +28,7 @@ public class ComUserController {
 	@Autowired
 	CommentService commentService;
 	
+	@Autowired
 	SecurityService securityService;
 
 	@PutMapping("/user/{username}")
@@ -42,7 +43,7 @@ public class ComUserController {
 		ComUser user = (ComUser) comUserService.login(username, password);
 		if (user != null) {
 			session.setAttribute("user", user);
-			return "redirect:show.jsp";
+			return "redirect: indexShow";
 		} else {
 			model.addAttribute("hint", "用户名或密码错误!");
 			return "login";
@@ -56,10 +57,17 @@ public class ComUserController {
 	}
 
 	@PostMapping("/comreg")
-	public String doRegister(ComUser user, Model model) {
-		Security security = securityService.getSecurityByKey(user.getSecurity().getSecurity());
+	public String doRegister(String username, String password, Integer securityid, String key, String email, Model model, HttpSession session) {
+		Security security = securityService.getSecurityById(securityid);
+		ComUser user = new ComUser();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setKey(key);
+		user.setEmail(email);
+		user.setSecurity(security);
 		if (comUserService.register(user)) {
-			return "redirect: login";
+			session.setAttribute("user", user);
+			return "redirect: indexShow";
 		} else {
 			model.addAttribute("hint", "注册失败请尝试不同的用户名!");
 			return "register";
@@ -71,5 +79,10 @@ public class ComUserController {
 	public String doComment(Comment comment, HttpSession session, Model model) {
 
 		return null;
+	}
+	
+	@GetMapping("toLog")
+	public String toLog(){
+		return "login";
 	}
 }
