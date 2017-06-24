@@ -47,20 +47,13 @@
 	</head>
 
 	<body>
+		<div style="height: 150px;" id="top3">
+			<embed src="images/top.swf" style="position:absolute;height: 150px;width: 100%;top:0px; z-index: -1;">
+			<strong style="margin:28px;"><span style="color: #fff; font-size: 48px;">网上订餐系统</span> </strong>
+		</div>
 		<table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
 			<tr>
-				<td height="101">
-					<img src="img/zr1.jpg" width="70" height="50" style="border-
-
-radius: 10%;float: left;margin-left: 150px;"/>
-					<strong><span style="font-size: 30px;float: left;margin-
-
-left:40px;">网上订餐系统</span>
-				</td>
-			</tr>
-			<tr>
 				<td valign="top" width="80%">
-								    
 					<div class="container">
 				      <form class="form-signin" action="comreg" method="post">
 				        <h3 class="form-signin-heading">用户注册</h3>

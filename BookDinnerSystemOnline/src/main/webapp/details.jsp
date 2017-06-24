@@ -2,6 +2,7 @@
 
 <html>
 	<head>
+	<script src="js/jquery.min.js"></script>
 	<title>餐品详细页面</title> 
 	<style>
 		a {
@@ -14,14 +15,11 @@
 	</head>
 
 <body>
-	<table style="width: 95%; height:170px; border: 0; align:center;" cellpadding="0" cellspacing="0">
-		<tr>
-			<td height="101">
-				<img src="img/zr1.jpg" width="70" height="50" style="border-radius: 10%;margin-left: 150px;"/>
-				<strong><span style="font-size: 30px;margin-left: 40px;">网上订餐系统</span> </strong>
-			</td>
-			<td>  </td>
-		</tr>
+	<div style="height: 150px;" id="top3">
+		<embed src="images/top.swf" style="position:absolute;height: 150px;width: 100%;top:0px; z-index: -1;">
+		<strong style="margin:28px;"><span style="color: #fff; font-size: 48px;">网上订餐系统</span> </strong>
+	</div>
+	<table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
 		<tr>
 			<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 				|
@@ -33,6 +31,7 @@
 					<a href="#">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
 				</s:if>
 				<s:if test="#session.user!=null">
+					
 					<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：小小白</font>
 					<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
 				</s:if>
@@ -74,9 +73,8 @@
 					<tr>
 						<td>
 							<span style="font-size: 20px;">编号：123456789</span>
-							<a style="float: right;" href="/Restrant/addtoshopcart?mealId=${requestScope.aMeal.mealId }">
+							<button id="editBtn" style="float: right;"></button>
 								<img src="images/buy_cn.gif" border="0" width="60" height="20" />
-							</a>
 						</td>
 					</tr>
 				</table>
@@ -104,5 +102,14 @@
 			</td>
 		</tr>
 	</table>
+	<script>
+	$(function() {
+		$('#editBtn').click(function(){
+			console.log(1);
+			var url = 'updateDish?dishid=123';
+			location.href = url;
+		});
+	});
+	</script>
 </body>
 </html>
