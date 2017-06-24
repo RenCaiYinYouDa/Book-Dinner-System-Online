@@ -180,7 +180,7 @@
                     </li>
 
                     <li class="tpl-left-nav-item">
-                        <a href="order.jsp" class="nav-link tpl-left-nav-link-list">
+                        <a href="showOrders" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-key"></i>
                             <span>订单查询</span>
 
@@ -218,11 +218,11 @@
                 <div class="tpl-block ">
                     <div class="am-g tpl-amazeui-form">
                         <div class="am-u-sm-12 am-u-md-9">
-                            <form class="am-form am-form-horizontal">
+                            <form class="am-form am-form-horizontal" action="saveUser" type="post">
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">邮箱 /Email</label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" id="user-name" placeholder="请输入邮箱">
+                                        <input type="text" id="email" name="email" placeholder="请输入邮箱">
                                         <small>输入你的邮箱。</small>
                                     </div>
                                 </div>
@@ -230,9 +230,9 @@
                                     <label for="user-email" class="am-u-sm-3 am-form-label">请选择问题</label>
                                     <div class="am-u-sm-9">
                                         <select data-am-selected="">
- 											<option value="a">-The.CC</option>
-  											<option value="b">夕风色</option>
-  											<option value="o">Orange</option>
+ 											<option value="a">你父亲的姓名</option>
+  											<option value="b">你母亲的姓名</option>
+  											<option value="o">你母校的名字</option>
 										</select>
                                     </div>
                                 </div>
@@ -240,13 +240,13 @@
                                 <div class="am-form-group">
                                     <label for="user-phone" class="am-u-sm-3 am-form-label">答案</label>
                                     <div class="am-u-sm-9">
-                                        <input type="tel" id="user-phone" placeholder=" 请输入答案 ">
+                                        <input type="tel" id="user-phone" name="key" placeholder=" 请输入答案 ">
                                     </div>
                                 </div>
                                                                                           
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary">保存修改</button>
+                                        <button type="submit" name="material" class="am-btn am-btn-primary">保存修改</button>
                                     </div>
                                 </div>
                             </form>

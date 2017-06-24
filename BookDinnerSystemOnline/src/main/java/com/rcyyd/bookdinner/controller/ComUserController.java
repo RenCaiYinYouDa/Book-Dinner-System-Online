@@ -52,7 +52,7 @@ public class ComUserController {
 		ComUser user = (ComUser) comUserService.login(username, password);
 		if (user != null) {
 			session.setAttribute("user", user);
-			return "redirect:show";
+			return "redirect:show.jsp";
 		} else {
 			model.addAttribute("hint", "用户名或密码错误!");
 			return "login";

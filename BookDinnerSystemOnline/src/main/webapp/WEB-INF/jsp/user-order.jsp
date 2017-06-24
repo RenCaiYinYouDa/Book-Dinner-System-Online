@@ -251,6 +251,7 @@
                                     </thead>
                                     <tbody>
                                     	<c:forEach items="${orderList}" var="order" varStatus="status">
+                                    	<a href="UserOrderController?orderid=${order.orderid }">
                                     		<tr>
                                             <td><input type="checkbox"></td>
                                             <td>${status.index+1}</td>
@@ -267,6 +268,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        </a>
                                     	</c:forEach>
                                     </tbody>
                                 </table>
