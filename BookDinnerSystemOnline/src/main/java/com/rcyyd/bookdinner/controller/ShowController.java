@@ -2,8 +2,6 @@ package com.rcyyd.bookdinner.controller;
 
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +21,7 @@ import com.rcyyd.bookdinner.service.DishtypeService;
  *
  */
 @Controller
-public class ShowController extends HttpServlet {
+public class ShowController{
 	
 	@Autowired
 	DishService dishService;
@@ -45,12 +43,13 @@ public class ShowController extends HttpServlet {
 	 * ≥ı ºªØ“≥√Ê
 	 * @return
 	 */
-	@GetMapping("/indexShow")
+	@GetMapping("indexShow")
 	public String initShow(Model model) {
 		getdishPageModel(1, 6, model);
 		List<Dishtype> typeList = dishTypeService.getAllTypes();
+		System.out.println("**************"+typeList.size());
 		model.addAttribute("typeList", typeList);
-		return "redirect:show.jsp";
+		return "show";
 	}
 
 }
