@@ -101,9 +101,6 @@
 							style="text-align:center; border:1px #cccccc solid;">
 							<tr style="background-color:#CCCCFF;">
 								<td>
-									<a href="/Restrant/clearCart">清空购物车</a>
-								</td>
-								<td>
 									<a href="/Restrant/toShowMeal">继续购物</a>
 								</td>
 								<td>
