@@ -201,9 +201,18 @@
         </div>
 
         <div class="tpl-content-wrapper">
+        <c:choose>
+        	<c:when test="${not empty dishid}">
+            <div class="tpl-content-page-title">
+                	更新商品
+            </div>
+            </c:when>
+            <c:otherwise>
             <div class="tpl-content-page-title">
                 	添加商品
             </div>
+            </c:otherwise>
+    	</c:choose>
             <div class="tpl-portlet-components">
                 <div class="portlet-title">
                     <div class="caption font-green bold">
