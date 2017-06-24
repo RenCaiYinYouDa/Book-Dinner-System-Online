@@ -27,13 +27,11 @@
 	</head>
 
 	<body>
+		<div style="height: 150px;" id="top3">
+			<embed src="images/top.swf" style="position:absolute;height: 150px;width: 100%;top:0px; z-index: -1;">
+			<strong style="margin:28px;"><span style="color: #fff; font-size: 48px;">网上订餐系统</span> </strong>
+		</div>
 		<table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
-			<tr>
-				<td height="101">
-					<img src="img/zr1.jpg" width="70" height="50" style="border-radius: 10%;float: right;margin-right: 40px;"/>
-				</td>
-				<td> <strong><span style="font-size: 30px;">网上订餐系统</span> </strong> </td>
-			</tr>
 			<tr>
 				<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 					|
