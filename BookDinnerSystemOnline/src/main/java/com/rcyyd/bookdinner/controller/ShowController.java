@@ -46,6 +46,13 @@ public class ShowController{
 		
 		return "show";
 	}
+	
+	@GetMapping("getDish") 
+	public String getDish(Integer dishid, Model model) {
+		Dish dish = dishService.getDishByid(dishid);
+		model.addAttribute("dish", dish);
+		return "details";
+	}
 
 }
 

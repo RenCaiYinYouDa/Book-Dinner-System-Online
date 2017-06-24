@@ -1,82 +1,85 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 
-<head>
-<title>餐品列表显示</title>
-<style>
-a {
-	TEXT-DECORATION: none;
-}
-
-a:hover {
-	color: #4876FF;
-}
-
-.detailMargin {
-	margin-top: 20px;
-}
-</style>
-
-<script type="text/javascript">
+	<head>
+		<title>餐品列表显示</title>
+		<style>
+			a {
+				TEXT-DECORATION: none;
+			}
+			a:hover {
+				color: #4876FF;
+			}
+			.detailMargin {
+				margin-top: 20px;
+			}
+		</style>
+		
+		<script type="text/javascript">
 			
 		</script>
+		
+	</head>
 
-</head>
-
-<body>
-	<table width="95%" height="170" border="0" cellpadding="0"
-		cellspacing="0" align="center">
-		<tr>
-			<td height="101"><img src="img/zr1.jpg" width="70" height="50"
-				style="border-radius: 10%; float: right; margin-right: 40px;" /></td>
-			<td><strong><span style="font-size: 30px;">网上订餐系统</span>
-			</strong></td>
-		</tr>
-		<tr>
-			<td height="41" colspan="2"
-				style="background-color: #F7F7F7; border-radius: 5px;"
-				align="center">| <a href="indexShow">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
-				<s:if test="(#session.admin==null) && (#session.user==null)">
-					<a href="#">&nbsp;&nbsp;用户中心&nbsp;&nbsp;</a>|
+	<body>
+		<div style="height: 150px;" id="top3">
+			<embed src="images/top.swf" style="position:absolute;height: 150px;width: 100%;top:0px; z-index: -1;">
+			<strong style="margin:28px;"><span style="color: #fff; font-size: 48px;">网上订餐系统</span> </strong>
+		</div>
+		<table width="95%" height="170" border="0" cellpadding="0" cellspacing="0" align="center">
+			<tr>
+				<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
+					|
+					<a href="#">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
+					<s:if test="(#session.admin==null) && (#session.user==null)">
+						<a href="#">&nbsp;&nbsp;用户中心&nbsp;&nbsp;</a>|
 						<a href="#">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
 						<a href="#">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
 						<a href="#">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
-					</s:if> <s:if test="#session.user!=null">
-
-					<font style="color: red">&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;欢迎您：小小白</font>
-					<a href="comlogout" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
-				</s:if>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" align="center"><br>
-				<p style="background-color: ghostwhite; font-size: 22px;">菜品分类</p> <br>
-				<!-- 菜系菜的种类循环开始 --> <c:forEach items="${typeList }" var="item">
+					</s:if>
+					<s:if test="#session.user!=null">
+						
+						<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：小小白</font>
+						<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
+					</s:if>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">
 					<br>
-					<a href="#" style="font-size: 18px;">${item.type}</a>
+						<p style="background-color: ghostwhite; font-size: 22px;">菜品分类</p>
 					<br>
-				</c:forEach> <!-- 菜系循环结束 --></td>
-			<td valign="top" width="80%"><br />
-				<div align="right">
+						<!-- 菜系菜的种类循环开始 -->
+						<c:forEach items="${typeList }" var="item">
+							<br>
+							<a href="#" style="font-size: 18px;">${item.type}</a>
+							<br>
+						</c:forEach>
+						<!-- 菜系循环结束 -->
+				</td>
+				<td valign="top" width="80%">
+					<br />
+					<div align="right">
 					<!--菜品查询表单-->
-					<form theme="simple" method="post" action="toShowMeal">
-						<input placeholder="请输入菜名" type="text" /> <input type="submit"
-							value="查询" />
-					</form>
-				</div>
-				<div style="background-color: #333333; height: 2px;">&nbsp;</div> <br />
-
-				<table cellpadding="5" cellspacing="1" style="font-size: 12px;">
-					<c:forEach items="${dishList }" var="item">
-						<a href="#">
+						<form theme="simple" method="post" action="toShowMeal">
+							<input placeholder="请输入菜名" type="text"/>
+							<input type="submit" value="查询"/>
+						</form>
+					</div>
+					<div style="background-color: #333333;height: 2px;">
+						&nbsp;
+					</div>
+					<br />
+					
+					<table cellpadding="5" cellspacing="1" style="font-size: 12px;">
+						<c:forEach items="${dishList }" var="item">
 							<tr>
-								<td><a href="#"><img src="mealimages/${item.image }"
+								<td><a href="getDish?dishid=${item.dishid }"><img src="mealimages/${item.image }"
 										width="148" height="126" border="0" /> </a></td>
 								<td>
 									<div>
@@ -96,37 +99,45 @@ a:hover {
 
 						</a>
 					</c:forEach>
+						
+						<!-- 餐品循环结束 -->
 
-					<!-- 餐品循环结束 -->
+						<!-- 分页超链接开始 -->
+						<table align="right">
+							<tr>
+								<td width="130"></td>
+								<td>
+									<s:if test="pager.curPage>1">
+										<A href='#'>首页</A>&nbsp;&nbsp;&nbsp;&nbsp;
+										<A href='#'>上一页</A>
+									</s:if>
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<s:if test="pager.curPage < pager.pageCount">
+										<A href='#'>下一页</A>&nbsp;&nbsp;&nbsp;&nbsp;
+										<A href='#'>尾页</A>
+									</s:if>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<td>共300记录&nbsp;&nbsp;/&nbsp;&nbsp;共 10页&nbsp;&nbsp;
+								</td>
+								</td>
+							</tr>
+						</table>
+						<!-- 分页超链接结束-->
 
-					<!-- 分页超链接开始 -->
-					<table align="right">
-						<tr>
-							<td width="130"></td>
-							<td><c:if test="${currentPage>1 }">
-									<A href="indexShow?page=1&size=6">首页</A>&nbsp;&nbsp;&nbsp;&nbsp;
-										<A href="indexShow?page=${currentPage-1 }&size=6">上一页</A>
-								</c:if> &nbsp;&nbsp;&nbsp;&nbsp; <c:if test="${totalPage>currentPage }">
-									<A href="indexShow?page=${currentPage+1 }&size=6">下一页</A>&nbsp;&nbsp;&nbsp;&nbsp;
-										<A href="indexShow?page=${totalPage}&size=6">尾页</A>
-								</c:if></td>
-						</tr>
-						<tr>
-							<td>
-							<td>共<fmt:formatNumber type="number" value="${totalPage}" pattern="0" maxFractionDigits="0"/>页
-							</td>
-							</td>
-						</tr>
 					</table>
-					<!-- 分页超链接结束-->
-
-				</table></td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center"><br>
-				<hr width=100%> <br></td>
-		</tr>
-	</table>
-</body>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<br>
+					<hr width=100%>
+					<br>
+				</td>
+			</tr>
+		</table>
+	</body>
 
 </html>

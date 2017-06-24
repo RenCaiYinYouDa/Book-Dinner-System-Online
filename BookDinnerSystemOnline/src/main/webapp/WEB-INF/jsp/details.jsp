@@ -48,31 +48,27 @@
 				<table style="width: 100%; border: 0;" cellspacing="0" cellpadding="3">
 					<tr>
 						<td width="148">
-							<img src="images/25.jpg" width="500" height="450" />
+							<img src="${dish.image }" width="500" height="450" />
 						</td>
 						<td style="width: 700px" valign="top">
 							<br />
 							<span style="font-size: 20px;"> 详细资料:</span>
 							<br />
 							<span style="font-size: 20px;"> &nbsp;&nbsp; &nbsp;&nbsp;
-							 鲜榨草莓汁系统使用说明										
-							本查询系统的信息来源于各高校招生网对外公开的数据，中国教育在线提供此信息之目的在于
-							为高考生提供更多的信息作为参考,请综合各种信息进行报考	
-							如对本系统有任何疑问请联系我们，欢迎更多招生单位及教育机构与我们合作，
-							联系电话:010-62603709</span>
+							${dish.brief }</span>
 							<br/>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span style="text-decoration:line-through;color:gray;font-size: 20px;">原价：人民币${requestScope.aMeal.mealPrice }元</span>
+							<span style="text-decoration:line-through;color:gray;font-size: 20px;">原价：人民币<fmt:formatNumber type="number" value="${dish.price }" pattern="0.00" maxFractionDigits="2"/>元</span>
 							<br/>
-							<span style="font-size: 20px;"> 现价：人民币${requestScope.aMeal.mealPrice*0.9 }元</span>
+							<span style="font-size: 20px;"> 现价：人民币<fmt:formatNumber type="number" value="${dish.price*0.8 }" pattern="0.00" maxFractionDigits="2"/>元</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span style="font-size: 20px;">编号：123456789</span>
+							<span style="font-size: 20px;">编号：${dish.dishid }</span>
 							<button id="editBtn" style="float: right;"></button>
 								<img src="images/buy_cn.gif" border="0" width="60" height="20" />
 						</td>
