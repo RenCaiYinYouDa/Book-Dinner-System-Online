@@ -10,4 +10,5 @@ public interface CartService {
 	boolean deleteFromCart(Cart cart);
 	boolean changeCart(Cart cart);
 	List<Cart> getAllDishesByUserId(Integer userid);
+	Cart getCartByKeys(int userid, int dishid);
 }

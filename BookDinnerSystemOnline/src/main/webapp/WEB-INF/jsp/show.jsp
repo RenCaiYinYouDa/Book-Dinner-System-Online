@@ -44,7 +44,9 @@
 					</c:if>
 					<c:if test="${not empty user.username}">
 						<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：${user.username}</font>
-						<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
+						<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;个人中心&nbsp;&nbsp;</a>
+						<a href="showCart?userid=${user.userid}" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;我的购物车&nbsp;&nbsp;</a>
+						<a href="comlogout" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
 					</c:if>
 				</td>
 			</tr>
@@ -91,7 +93,7 @@
 										<p calss="detailMargin" style="font-size: 15px;">现价：人民币<fmt:formatNumber type="number" value="${item.price*0.8 }" pattern="0.00" maxFractionDigits="2"/>
 											元</p>
 									</div> <a href="details.jsp"><img src="img/detail_cn.gif"
-										border="0" width="60" height="20" /></a> <a href="#"><img
+										border="0" width="60" height="20" /></a> <a href="addToCart?dishid=${item.dishid}&userid=${user.userid}&page=${currentPage}"><img
 										src="img/buy_cn.gif" border="0" width="60" height="20" /></a>
 								</td>
 							</tr>
@@ -106,26 +108,15 @@
 							<tr>
 								<td width="130"></td>
 								<td>
-									<s:if test="pager.curPage>1">
-										<A href='#'>首页</A>&nbsp;&nbsp;&nbsp;&nbsp;
-										<A href='#'>上一页</A>
-									</s:if>
-									&nbsp;&nbsp;&nbsp;&nbsp;
-									<s:if test="pager.curPage < pager.pageCount">
-										<A href='#'>下一页</A>&nbsp;&nbsp;&nbsp;&nbsp;
-										<A href='#'>尾页</A>
-									</s:if>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<td>共300记录&nbsp;&nbsp;/&nbsp;&nbsp;共 10页&nbsp;&nbsp;
-								</td>
+									<c:if test="${currentPage > 1}">
+                                    	<li class="am-active"><a href="indexShow?page=${currentPage - 1}">上一页</a></li>
+                                  	</c:if>
+                                 	<c:if test="${currentPage < totalPage}">
+                                  		<li class="am-active"><a href="indexShow?page=${currentPage + 1}">下一页</a></li>
+                                   	</c:if>
 								</td>
 							</tr>
 						</table>
-						<!-- 分页超链接结束-->
-
 					</table>
 				</td>
 			</tr>

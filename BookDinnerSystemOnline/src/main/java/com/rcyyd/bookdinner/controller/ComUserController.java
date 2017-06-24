@@ -50,10 +50,10 @@ public class ComUserController {
 		}
 	}
 
-	@PostMapping("/comlogout")
+	@GetMapping("/comlogout")
 	public String doLogout(HttpSession session) {
 		session.invalidate();
-		return "show";
+		return "redirect: indexShow";
 	}
 
 	@PostMapping("/comreg")

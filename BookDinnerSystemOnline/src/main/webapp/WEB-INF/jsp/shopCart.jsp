@@ -101,7 +101,7 @@
 							style="text-align:center; border:1px #cccccc solid;">
 							<tr style="background-color:#CCCCFF;">
 								<td>
-									<a href="/Restrant/toShowMeal">继续购物</a>
+									<a href="indexShow">继续购物</a>
 								</td>
 								<td>
 									<a href="generateOrder?userid=1">生成订单</a>

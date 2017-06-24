@@ -162,7 +162,7 @@
             <div class="tpl-left-nav-list">
                 <ul class="tpl-left-nav-menu">
                     <li class="tpl-left-nav-item">
-                        <a href="index.html" class="nav-link">
+                        <a href="indexShow" class="nav-link">
                             <i class="am-icon-home"></i>
                             <span>首页</span>
                         </a>

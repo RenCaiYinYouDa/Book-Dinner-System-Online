@@ -77,4 +77,21 @@ public class CartController {
 		}
 		return "redirect: showOrders";
 	}
+	
+	@GetMapping("addToCart")
+	public String toAddToCart(Integer dishid, Integer userid, Integer page, RedirectAttributes attr){
+		Cart cart = cartService.getCartByKeys(userid, dishid);
+		if (cart != null){
+			cart.setCount(cart.getCount() + 1);
+			cartService.changeCart(cart);
+		}else{
+			cart = new Cart();
+			cart.setUserid(userid);
+			cart.setDishid(dishid);
+			cart.setCount(1);
+			cartService.addToCart(cart);
+		}
+		attr.addAttribute("page", page);
+		return "redirect: indexShow";
+	}
 }

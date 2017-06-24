@@ -39,4 +39,9 @@ public class CartServiceImpl implements CartService{
 	public List<Cart> getAllDishesByUserId(Integer userid) {
 		return cartDao.findByKey(userid, "userid");
 	}
+
+	@Override
+	public Cart getCartByKeys(int userid, int dishid) {
+		return cartDao.findCartByKeys(userid, dishid);
+	}
 }
