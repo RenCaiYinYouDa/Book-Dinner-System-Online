@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -62,27 +63,26 @@
 					<table align="center" width="95%" cellspacing="0" cellpadding="3"
 						style="text-align:center; border:1px #cccccc solid;">
 						<tr style="background-color:#CCCCFF;">
-							<td>编号</td>
-							<td>商品名称</td>
-							<td>单价</td>
-							<td>数量</td>
-							<td>金额</td>
-							<td>删除</td>
-						</tr>				
-						<s:set var="sumPrice" value="0" />
-						<s:iterator id="cartItem" value="#session.cart">
+							<th>编号</th>
+							<th>商品名称</th>
+							<th>单价</th>
+							<th>数量</th>
+							<th>金额</th>
+							<th>删除</th>
+						</tr>	
+						<c:forEach items="${cartList}" var="cart" varStatus="status">
 							<tr style="background-color:#FFFFFF;">
 								<td>
-									<s:property value="value.meal.mealId"/>
+									${status.index}
 								</td>
 								<td>
-									<s:property value="value.meal.mealName"/>
+									${cart.dishid}
 								</td>
 								<td>
-									￥<s:property value="value.meal.mealPrice"/>
+									￥20
 								</td>
 								<td>								
-									<input type="text"  value="${value.quantity}" size="10" 
+									<input type="text"  value="${cart.count}" size="10" 
 									onchange="window.location='updateSelectedQuantity?mealId=${value.meal.mealId}&quantity='+this.value;">
 								</td>
 								<td>
@@ -92,8 +92,7 @@
 									<a href="deleteSelectedOrders?mealId=${value.meal.mealId}">删除</a>
 								</td>
 							</tr>
-							<s:set var="sumPrice" value="#sumPrice+value.quantity*value.meal.mealPrice" />
-						</s:iterator>
+						</c:forEach>
 						<tr style="background-color:#CCCCFF;">
 							<td>
 								合计

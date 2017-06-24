@@ -1,5 +1,7 @@
 package com.rcyyd.bookdinner.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,11 @@ public class CartServiceImpl implements CartService{
 	public boolean changeCart(Cart cart) {
 		cartDao.update(cart);
 		return true;
+	}
+
+	@Override
+	public List<Cart> getAllDishesByUserId(Integer userid) {
+		return cartDao.findByKey(userid, "userid");
 	}
 
 }
