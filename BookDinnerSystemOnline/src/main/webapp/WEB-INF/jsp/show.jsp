@@ -91,13 +91,11 @@
 											原价：人民币<fmt:formatNumber type="number" value="${item.price }" pattern="0.00" maxFractionDigits="2"/>元 </span>
 										<p calss="detailMargin" style="font-size: 15px;">现价：人民币<fmt:formatNumber type="number" value="${item.price*0.8 }" pattern="0.00" maxFractionDigits="2"/>
 											元</p>
-									</div> <a href="details.jsp"><img src="img/detail_cn.gif"
+									</div> <a href="showDishDetail?dishid=${item.dishid}"><img src="img/detail_cn.gif"
 										border="0" width="60" height="20" /></a> <a href="addToCart?dishid=${item.dishid}&userid=${user.userid}&page=${currentPage}"><img
 										src="img/buy_cn.gif" border="0" width="60" height="20" /></a>
 								</td>
 							</tr>
-
-						</a>
 					</c:forEach>
 						
 						<!-- 餐品循环结束 -->

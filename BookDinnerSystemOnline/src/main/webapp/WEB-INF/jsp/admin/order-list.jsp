@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -302,7 +303,7 @@
                                             </c:if>
                                             <td class="am-hide-sm-only">${order.userid}</td>
                                             <td class="am-hide-sm-only">${order.addrid}</td>
-                                            <td class="am-hide-sm-only">${order.date}</td>
+                                            <td class="am-hide-sm-only"><fmt:formatDate value="${order.date}" pattern="yyyy-MM-dd"/></td>
                                             <td>
                                                 <div class="am-btn-toolbar">
                                                     <div class="am-btn-group am-btn-group-xs">

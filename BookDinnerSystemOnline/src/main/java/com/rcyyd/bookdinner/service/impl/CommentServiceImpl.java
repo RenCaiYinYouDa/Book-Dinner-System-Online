@@ -28,4 +28,10 @@ public class CommentServiceImpl implements CommentService {
 		PageModel<Comment> pm = commentDao.findByPageDish(page, size, dishid);
 		return pm;
 	}
+
+	@Override
+	public boolean saveComment(Comment comment) {
+		commentDao.save(comment);
+		return true;
+	}
 }

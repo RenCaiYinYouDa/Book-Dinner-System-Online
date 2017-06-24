@@ -8,11 +8,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.apache.commons.codec.digest.DigestUtils;
+
+import com.rcyyd.bookdinner.domain.ComUser;
+import com.rcyyd.bookdinner.persistence.BaseDao;
+import com.rcyyd.bookdinner.persistence.impl.BaseDaoHibernateAdapter;
 
 public final class CommonUtil {
 	
@@ -127,4 +132,5 @@ public final class CommonUtil {
 		m.put(2, "ря╬э╬Ь");
 		return m.get(type);
 	}
+
 }

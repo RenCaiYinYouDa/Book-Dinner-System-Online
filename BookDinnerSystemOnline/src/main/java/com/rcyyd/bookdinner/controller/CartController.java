@@ -80,6 +80,9 @@ public class CartController {
 	
 	@GetMapping("addToCart")
 	public String toAddToCart(Integer dishid, Integer userid, Integer page, RedirectAttributes attr){
+		if (page == null){
+			page = 1;
+		}
 		Cart cart = cartService.getCartByKeys(userid, dishid);
 		if (cart != null){
 			cart.setCount(cart.getCount() + 1);

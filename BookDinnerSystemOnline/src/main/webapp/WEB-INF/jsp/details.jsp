@@ -1,5 +1,7 @@
+<%@page import="com.rcyyd.bookdinner.util.CommonUtil"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 	<head>
 	<script src="js/jquery.min.js"></script>
@@ -24,17 +26,17 @@
 			<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 				|
 				<a href="#">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
-				<s:if test="(#session.admin==null) && (#session.user==null)">
-					<a href="#">&nbsp;&nbsp;用户中心&nbsp;&nbsp;</a>|
-					<a href="#">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
-					<a href="#">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
-					<a href="#">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
-				</s:if>
-				<s:if test="#session.user!=null">
-					
-					<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：小小白</font>
-					<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
-				</s:if>
+				<c:if test="${empty user.username}">
+					<a href="toRegiste">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
+					<a href="toLog?flag=0">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
+					<a href="toLog?flag=1">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
+				</c:if>
+				<c:if test="${not empty user.username}">
+					<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：${user.username}</font>
+					<a href="showPersonOrder" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;个人中心&nbsp;&nbsp;</a>
+					<a href="showCart?userid=${user.userid}" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;我的购物车&nbsp;&nbsp;</a>
+					<a href="comlogout" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
+				</c:if>
 			</td>
 		</tr>
 		<tr>
@@ -61,16 +63,15 @@
 					</tr>
 					<tr>
 						<td>
-							<span style="text-decoration:line-through;color:gray;font-size: 20px;">原价：人民币<fmt:formatNumber type="number" value="${dish.price }" pattern="0.00" maxFractionDigits="2"/>元</span>
+							<span style="text-decoration:line-through;color:gray;font-size: 20px;">原价：${dish.price}元</span>
 							<br/>
-							<span style="font-size: 20px;"> 现价：人民币<fmt:formatNumber type="number" value="${dish.price*0.8 }" pattern="0.00" maxFractionDigits="2"/>元</span>
+							<span style="font-size: 20px; color: red;"> 现价：${dish.price * 0.8}元</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<span style="font-size: 20px;">编号：${dish.dishid }</span>
-							<button id="editBtn" style="float: right;"></button>
-								<img src="images/buy_cn.gif" border="0" width="60" height="20" />
+							<a href="addToCart?dishid=${dish.dishid}&userid=${user.userid}"><img src="img/buy_cn.gif" border="0" width="60" height="20" /></a>
 						</td>
 					</tr>
 				</table>
@@ -92,17 +93,30 @@
 		<c:forEach items="${commentList}" var="comment">
 			<tr>
 			<td align="center">
-				<span style="font-size: 15px;"> 用户名：${comment.userid}</span>
+				<span style="font-size: 15px;"> 用户Id：${comment.userid}</span>
 			</td>
 			<td>
 				<span style="font-size: 15px;"> ${comment.comment}</span>
 			</td>
 			<td>
-				<span style="font-size: 15px;"> ${comment.date}</span>
+				<span style="font-size: 15px;"><fmt:formatDate value="${comment.date}" pattern="yyyy-MM-dd"/></span>
 			</td>
 		</tr>
 		</c:forEach>
 	</table>
+	<c:if test="${not empty user.username}">
+	<hr/>
+	<h3>评论</h3>
+	<form action="publishComments" method="post">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<label>商品Id：</label>
+		<input type="text" name="dishid" value="${dish.dishid}" size="3" readonly />
+		<label>用户Id：</label>
+		<input type="text" name="userid" value="${user.userid}" size="3" readonly />
+		<input type="text" name="commentstr" placeholder="请输入评论" required />
+		<input type="submit" value="发布" />
+	</form>
+	</c:if>
 	<div class="am-fr">
   		<ul class="am-pagination tpl-pagination">
       	<c:if test="${currentPage > 1}">
