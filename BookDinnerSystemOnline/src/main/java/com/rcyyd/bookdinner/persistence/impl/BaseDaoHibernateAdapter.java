@@ -141,8 +141,19 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 					.getSingleResult().intValue();
 			int totalPage = (totalCount - 1) / size + 1;
 			return new PageModel<>(dataList, page, size, totalPage);
-		}
-		
-		
+		}	
+	}
+	
+	@Override
+	public PageModel<E> findByPageDish(int page, int size, int dishid) {
+		List<E> dataList = sessionFactory.getCurrentSession()
+				.createQuery("from " + entityTypeName + " as  o where o.dishid="+dishid+"order by o." + "commid" + " desc")
+				.setFirstResult((page - 1) * size).setMaxResults(size)
+				.getResultList();
+		int totalCount = sessionFactory.getCurrentSession()
+				.createQuery("select count(o) from " + entityTypeName + " as o", Long.class)
+				.getSingleResult().intValue();
+		int totalPage = (totalCount - 1) / size + 1;
+		return new PageModel<>(dataList, page, size, totalPage);
 	}
 }

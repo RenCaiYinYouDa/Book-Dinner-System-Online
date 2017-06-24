@@ -29,27 +29,29 @@ public class ShowController{
 	@Autowired
 	DishtypeService dishTypeService;
 	
-	@GetMapping("/dishPage")
-	public void getdishPageModel(Integer page, Integer size, Model model) {
+	/**
+	 * 初始化页面
+	 * @return
+	 */
+	@GetMapping("indexShow")
+	public String initShow(Integer page, Integer size, Model model) {
 		if (page == null) page = 1;
 		if (size == null) size = 6;
 		PageModel<Dish> pm = dishService.getDishesByPage(page, size);
 		model.addAttribute("dishList", pm.getDataList());
 		model.addAttribute("currentPage", pm.getCurrentPage());
 		model.addAttribute("totalPage", pm.getTotalPage());
+		List<Dishtype> typeList = dishTypeService.getAllTypes();
+		model.addAttribute("typeList", typeList);
+		
+		return "show";
 	}
 	
-	/**
-	 * 初始化页面
-	 * @return
-	 */
-	@GetMapping("indexShow")
-	public String initShow(Model model) {
-		getdishPageModel(1, 6, model);
-		List<Dishtype> typeList = dishTypeService.getAllTypes();
-		System.out.println("**************"+typeList.size());
-		model.addAttribute("typeList", typeList);
-		return "show";
+	@GetMapping("getDish") 
+	public String getDish(Integer dishid, Model model) {
+		Dish dish = dishService.getDishByid(dishid);
+		model.addAttribute("dish", dish);
+		return "details";
 	}
 
 }

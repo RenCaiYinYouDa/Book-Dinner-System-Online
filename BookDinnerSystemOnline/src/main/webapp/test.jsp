@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form name="testform">
+
+	<jsp:forward page = "/WEB-INF/jsp/shopCart.jsp" />
+
+</form>
 
 </body>
 </html>
