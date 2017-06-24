@@ -62,7 +62,6 @@
 						</c:forEach>
 						<!-- 菜系循环结束 -->
 				</td>
-				
 				<td valign="top" width="80%">
 					<br />
 					<div align="right">
@@ -78,23 +77,28 @@
 					<br />
 					
 					<table cellpadding="5" cellspacing="1" style="font-size: 12px;">
-						<!-- 餐品循环开始   一行显示三个菜，需要加判断换行 -->
-						<s:iterator id="mealItem" value="#request.mealList" status="st">
-							<td>
-								<a href="#"><img src="mealimages/${mealItem.mealImage }" width="148" height="126" border="0" /> </a>
-							</td>
-							<td>
-								<div>
-									<p style="font-size: 17px;">0001 : 粉蒸排骨<br /></p>
-									<span calss="detailMargin" style="text-decoration: line-through; color: gray;">
-										原价：人民币25.00元
-									</span>
-									<p calss="detailMargin" style="font-size:15px;">现价：人民币 23.00 元</p>
-								</div>
-								<a href="#"><img src="img/detail_cn.gif" border="0" width="60" height="20" /></a>
-								<a href="#"><img src="img/buy_cn.gif" border="0" width="60" height="20" /></a>
-							</td>
-						</s:iterator>
+						<c:forEach items="${dishList }" var="item">
+							<tr>
+								<td><a href="getDish?dishid=${item.dishid }"><img src="mealimages/${item.image }"
+										width="148" height="126" border="0" /> </a></td>
+								<td>
+									<div>
+										<p style="font-size: 17px;">${item.dishid }
+											: ${item.dishname }<br />
+										</p>
+										<span calss="detailMargin"
+											style="text-decoration: line-through; color: gray;">
+											原价：人民币<fmt:formatNumber type="number" value="${item.price }" pattern="0.00" maxFractionDigits="2"/>元 </span>
+										<p calss="detailMargin" style="font-size: 15px;">现价：人民币<fmt:formatNumber type="number" value="${item.price*0.8 }" pattern="0.00" maxFractionDigits="2"/>
+											元</p>
+									</div> <a href="details.jsp"><img src="img/detail_cn.gif"
+										border="0" width="60" height="20" /></a> <a href="#"><img
+										src="img/buy_cn.gif" border="0" width="60" height="20" /></a>
+								</td>
+							</tr>
+
+						</a>
+					</c:forEach>
 						
 						<!-- 餐品循环结束 -->
 
