@@ -75,7 +75,7 @@ public class CartController {
 			odService.addToOrder_Dish(od);
 			cartService.deleteFromCart(c);
 		}
-		return "redirect: showOrders";
+		return "redirect: showPersonOrder";
 	}
 	
 	@GetMapping("addToCart")

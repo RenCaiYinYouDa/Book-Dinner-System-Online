@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.alibaba.fastjson.JSON;
 import com.rcyyd.bookdinner.domain.ComUser;
@@ -39,14 +40,15 @@ public class ComUserController {
 	}
 
 	@PostMapping("/comlogin")
-	public String doLogin(String username, String password, Model model, HttpSession session) {
+	public String doLogin(String username, String password, Model model, HttpSession session, RedirectAttributes attr) {
 		ComUser user = (ComUser) comUserService.login(username, password);
 		if (user != null) {
 			session.setAttribute("user", user);
 			return "redirect: indexShow";
 		} else {
 			model.addAttribute("hint", "用户名或密码错误!");
-			return "login";
+			attr.addAttribute("loginFlag", 0);
+			return "redirect: toLog";
 		}
 	}
 
@@ -82,7 +84,13 @@ public class ComUserController {
 	}
 	
 	@GetMapping("toLog")
-	public String toLog(){
+	public String toLog(Integer flag, Model model){
+		model.addAttribute("loginFlag", flag);
 		return "login";
+	}
+	
+	@GetMapping("toRegiste")
+	public String toRegiste(){
+		return "register";
 	}
 }

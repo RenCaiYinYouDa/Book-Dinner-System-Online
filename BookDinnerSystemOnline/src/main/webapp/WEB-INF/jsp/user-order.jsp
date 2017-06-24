@@ -1,3 +1,4 @@
+<%@page import="com.rcyyd.bookdinner.util.CommonUtil"%>
 <%@page pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -250,9 +251,7 @@
                                             <th class="table-id">ID</th>
                                             <th class="table-title">订单号</th>
                                             <th class="table-type">状态</th>
-                                            <th class="table-author am-hide-sm-only">作者</th>
                                             <th class="table-date am-hide-sm-only">购买日期</th>
-                                            <th class="table-set">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -262,17 +261,16 @@
                                             <td><input type="checkbox"></td>
                                             <td>${status.index+1}</td>
                                             <td><a href="#">${order.ordernum}</a></td>
-                                            <td>${order.statusid}</td>
-                                            <td class="am-hide-sm-only">${order.userid}</td>
+                                            <c:if test="${order.statusid eq 0}">
+                                            <td><%=CommonUtil.getOrderTypeNameByType(0) %></td>
+                                            </c:if>
+                                            <c:if test="${order.statusid eq 1}">
+                                            <td><%=CommonUtil.getOrderTypeNameByType(1) %></td>
+                                            </c:if>
+                                            <c:if test="${order.statusid eq 2}">
+                                            <td><%=CommonUtil.getOrderTypeNameByType(2) %></td>
+                                            </c:if>
                                             <td class="am-hide-sm-only">${order.date}</td>
-                                            <td>
-                                                <div class="am-btn-toolbar">
-                                                    <div class="am-btn-group am-btn-group-xs">
-                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 接单</button>
-                                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 拒单</button>
-                                                    </div>
-                                                </div>
-                                            </td>
                                         </tr>
                                         </a>
                                     	</c:forEach>

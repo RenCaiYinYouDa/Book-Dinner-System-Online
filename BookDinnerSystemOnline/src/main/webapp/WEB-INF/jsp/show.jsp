@@ -37,14 +37,13 @@
 					|
 					<a href="#">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
 					<c:if test="${empty user.username}">
-						<a href="#">&nbsp;&nbsp;用户中心&nbsp;&nbsp;</a>|
-						<a href="#">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
-						<a href="toLog">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
-						<a href="toLog">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
+						<a href="toRegiste">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
+						<a href="toLog?flag=0">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
+						<a href="toLog?flag=1">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
 					</c:if>
 					<c:if test="${not empty user.username}">
 						<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：${user.username}</font>
-						<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;个人中心&nbsp;&nbsp;</a>
+						<a href="showPersonOrder" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;个人中心&nbsp;&nbsp;</a>
 						<a href="showCart?userid=${user.userid}" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;我的购物车&nbsp;&nbsp;</a>
 						<a href="comlogout" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
 					</c:if>

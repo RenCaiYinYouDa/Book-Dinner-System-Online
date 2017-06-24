@@ -90,7 +90,7 @@ control" placeholder="请输入密保答案" required>
 				        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 				      </form>
 				      <div style="margin:0 auto; max-width:330px; padding: 20px 20px;">
-				      	<a href="toLog">返回登录</a>
+				      	<a href="toLog?flag=0">返回登录</a>
 				      </div>
 				    </div>			    
 								    

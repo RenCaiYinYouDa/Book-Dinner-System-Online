@@ -18,17 +18,18 @@
 				<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 					|
 					<a href="#">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
-					<s:if test="(#session.admin==null) && (#session.user==null)">
+					<c:if test="${empty user.username}">
 						<a href="#">&nbsp;&nbsp;用户中心&nbsp;&nbsp;</a>|
 						<a href="#">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
-						<a href="#">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
-						<a href="#">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
-					</s:if>
-					<s:if test="#session.user!=null">
-						
-						<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：小小白</font>
-						<a href="#" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
-					</s:if>
+						<a href="toLog">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
+						<a href="toLog">&nbsp;&nbsp;管理员登录&nbsp;&nbsp;</a> |
+					</c:if>
+					<c:if test="${not empty user.username}">
+						<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：${user.username}</font>
+						<a href="showPersonOrder" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;个人中心&nbsp;&nbsp;</a>
+						<a href="showCart?userid=${user.userid}" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;我的购物车&nbsp;&nbsp;</a>
+						<a href="comlogout" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
+					</c:if>
 				</td>
 			</tr>
 				<tr>
@@ -104,7 +105,7 @@
 									<a href="indexShow">继续购物</a>
 								</td>
 								<td>
-									<a href="generateOrder?userid=1">生成订单</a>
+									<a href="generateOrder?userid=${user.userid}">生成订单</a>
 								</td>
 							</tr>
 						</table>

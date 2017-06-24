@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -116,5 +118,13 @@ public final class CommonUtil {
 			e.printStackTrace();
 		}
 		return date;
+	}
+	
+	public static String getOrderTypeNameByType(Integer type) {
+		Map<Integer, String> m = new HashMap<>();
+		m.put(0, "未接单");
+		m.put(1, "已接单");
+		m.put(2, "已拒绝");
+		return m.get(type);
 	}
 }

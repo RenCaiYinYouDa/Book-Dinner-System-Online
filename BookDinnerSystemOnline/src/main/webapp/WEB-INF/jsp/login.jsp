@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,8 +23,7 @@
 				    </div>
 					
 					
-					<s:if test="#">
-						
+					<c:if test="${loginFlag eq 0}">
 					    <div class="container">
 					      <form id="loginForm" class="form-signin" action="comlogin" method="POST">
 					        <h3 class="form-signin-heading">用户登录</h3>
@@ -40,18 +40,15 @@
 					        <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">登录</button>
 					      </form>
 					      <div style="margin:0 auto; max-width:330px; padding: 20px 20px;">
-					      	<a href="register.jsp">马上注册</a>
+					      	<a href="toRegiste">马上注册</a>
 					      </div>
 					    </div>
-			
-			       
-					</s:if>
+					</c:if>
 					
 				
-					<s:if test="#parameters.role[0]=='admin'"> 
-
-						
-						<form id="loginForm" class="form-signin" action="login" method="POST">
+					<c:if test="${loginFlag eq 1}"> 
+						<div class="container">
+						<form id="loginForm" class="form-signin" action="admlogin" method="POST">
 					        <h3 class="form-signin-heading">管理员登录</h3>
 					        <label for="loginName" class="sr-only">登录名：</label>					        
 					        <input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" required autofocus>
@@ -65,14 +62,9 @@
 					        </div>
 					        <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">登录</button>
 					      </form>
-					      <div style="margin:0 auto; max-width:330px; padding: 20px 20px;">
-					      	<a href="toReg">马上注册</a>
-					      </div>
 					    </div>
-						
-						
-									
-					</s:if>					
+							
+					</c:if>					
 				</td>
 			</tr>
 			<tr>

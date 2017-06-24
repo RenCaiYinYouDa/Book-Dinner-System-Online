@@ -1,3 +1,4 @@
+<%@page import="com.rcyyd.bookdinner.util.CommonUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -129,7 +130,7 @@
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"> <img src="../assets/img/user01.png"></span>
+                        <span class="tpl-header-list-user-nick">${user.username}</span><span class="tpl-header-list-user-ico"> <img src="../assets/img/user01.png"></span>
                     </a>
                     <ul class="am-dropdown-content">
                         <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
@@ -290,7 +291,15 @@
                                             <td><input type="checkbox"></td>
                                             <td>${order.orderid}</td>
                                             <td><a href="#">${order.ordernum}</a></td>
-                                            <td>${order.statusid}</td>
+                                            <c:if test="${order.statusid eq 0}">
+                                            <td><%=CommonUtil.getOrderTypeNameByType(0) %></td>
+                                            </c:if>
+                                            <c:if test="${order.statusid eq 1}">
+                                            <td><%=CommonUtil.getOrderTypeNameByType(1) %></td>
+                                            </c:if>
+                                            <c:if test="${order.statusid eq 2}">
+                                            <td><%=CommonUtil.getOrderTypeNameByType(2) %></td>
+                                            </c:if>
                                             <td class="am-hide-sm-only">${order.userid}</td>
                                             <td class="am-hide-sm-only">${order.addrid}</td>
                                             <td class="am-hide-sm-only">${order.date}</td>
