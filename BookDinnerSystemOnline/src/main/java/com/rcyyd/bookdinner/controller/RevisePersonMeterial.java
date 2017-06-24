@@ -27,7 +27,7 @@ public class RevisePersonMeterial {
 		user.setEmail(email);
 		user.setKey(key);
 		//user.setSecurity(security);
-		comuserService.editComUser(user);
-		return "redirect:riviseMeterial.jsp";	
+		comuserService.updateUser(user);
+		return "redirect:rivisemeterial.jsp";	
 	}
 }

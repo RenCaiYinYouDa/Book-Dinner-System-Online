@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>修改个人信息</title>
+    <title>我的收藏</title>
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,6 +83,7 @@
                                 <span class="tpl-dropdown-content-font"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </span>
                             </a>
                         </li>
+
                     </ul>
                 </li>
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
@@ -152,6 +153,8 @@
 
 
     <div class="tpl-page-container tpl-page-header-fixed">
+
+
         <div class="tpl-left-nav tpl-left-nav-hover">
             <div class="tpl-left-nav-title">
                 个人中心
@@ -164,20 +167,16 @@
                             <span>首页</span>
                         </a>
                     </li>
-                    
-
-                    
-
-                    <li class="tpl-left-nav-item">
-                        <!-- 打开状态 a 标签添加 active 即可   -->
-                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
-                            <i class="am-icon-table"></i>
+                                   
+                
+					<li class="tpl-left-nav-item">
+                        <a href="rivisemeterial.jsp" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-key"></i>
                             <span>修改信息</span>
-                            <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->                           
-                        </a>
-                        
-                    </li>
 
+                        </a>
+                    </li>
+                    
                     <li class="tpl-left-nav-item">
                         <a href="showPersonOrder" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-key"></i>
@@ -185,13 +184,19 @@
 
                         </a>
                     </li>
+                    
                     <li class="tpl-left-nav-item">
-                        <a href="showPrivateDishes" class="nav-link tpl-left-nav-link-list">
-                            <i class="am-icon-key"></i>
+                        <!-- 打开状态 a 标签添加 active 即可   -->
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-table"></i>
                             <span>我的收藏</span>
-
+                            <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
+                            
                         </a>
+                        
                     </li>
+
+                                       
                 </ul>
             </div>
         </div>
@@ -202,63 +207,91 @@
 
         <div class="tpl-content-wrapper">
             <div class="tpl-content-page-title">
-                修改个人信息
+                我的收藏
             </div>
             <ol class="am-breadcrumb">
                 <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">修改信息</a></li>
+                <li><a href="#">我的收藏</a></li>
             </ol>
             <div class="tpl-portlet-components">
                 <div class="portlet-title">
                     <div class="caption font-green bold">
-                        <span class="am-icon-code"></span> 个人信息
+                        <span class="am-icon-code"></span> 订单
                     </div>
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-small input-inline">
-                            
+                            <div class="input-icon right">
+                                <i class="am-icon-search"></i>
+                                <input type="text" class="form-control form-control-solid" placeholder="搜索..."> </div>
                         </div>
                     </div>
 
 
                 </div>
-                <div class="tpl-block ">
-                    <div class="am-g tpl-amazeui-form">
-                        <div class="am-u-sm-12 am-u-md-9">
-                            <form class="am-form am-form-horizontal" action="saveUser" type="post">
-                                <div class="am-form-group">
-                                    <label for="user-name" class="am-u-sm-3 am-form-label">邮箱 /Email</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="text" id="email" name="email" placeholder="请输入邮箱">
-                                        <small>输入你的邮箱。</small>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-form-group">
+                                <select data-am-selected="{btnSize: 'sm'}">
+              						<option value="option1">所有类别</option>
+              						<option value="option2">IT业界</option>
+              						<option value="option3">数码产品</option>
+              						<option value="option3">笔记本电脑</option>
+              						<option value="option3">平板电脑</option>
+              						<option value="option3">只能手机</option>
+              						<option value="option3">超极本</option>
+            					</select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-g">
+                        <div class="tpl-table-images">
+                        	<c:forEach items="${dishList}" var="dish">
+                        	<div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                                <div class="tpl-table-images-content">
+                                    <div class="tpl-i-title">
+                                    	<span class='dishid'>${dish.dishid}</span>
+                                        &nbsp;&nbsp;${dish.dishname}&nbsp;&nbsp;
+                                        ${dish.brief}
+                                    </div>
+                                    <a href="javascript:;" class="tpl-table-images-content-i">
+                                        <span class="tpl-table-images-content-i-shadow"></span>
+                                        <img src="../dishimg/${dish.image}" alt="">
+                                    </a>
+                                    <div class="tpl-table-images-content-block">
+                                        <div class="tpl-i-font">
+                                        	${dish.price}
+                                        </div>
+                                        <div class="am-btn-toolbar">
+                                            <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
+                                                <button type="button" class="am-btn am-btn-default am-btn-secondary editBtn"><span class="am-icon-edit"></span> 编辑</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-danger deleteBtn"><span class="am-icon-trash-o"></span> 删除</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="am-form-group">
-                                    <label for="user-email" class="am-u-sm-3 am-form-label">请选择问题</label>
-                                    <div class="am-u-sm-9">
-                                        <select data-am-selected= >
- 											<option value="a">你父亲的姓名</option>
-  											<option value="b">你母亲的姓名</option>
-  											<option value="o">你母校的名字</option>
-										</select>
+                            </div>
+                        	</c:forEach>
+                                                        
+                            <div class="am-u-lg-12">
+                                <div class="am-cf">
+                                    <div class="am-fr">
+                                        <ul class="am-pagination tpl-pagination">
+                                            <c:if test="${dishcurrentPage > 1}">
+                                            <li class="am-active"><a href="showDishes?page=${dishcurrentPage - 1}">上一页</a></li>
+                                            </c:if>
+                                            <c:if test="${dishcurrentPage < dishtotalPage}">
+                                            <li class="am-active"><a href="showDishes?page=${dishcurrentPage + 1}">下一页</a></li>
+                                            </c:if>
+                                        </ul>
                                     </div>
                                 </div>
-
-                                <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">答案</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="tel" id="user-phone" name="key" placeholder=" 请输入答案 ">
-                                    </div>
-                                </div>
-                                                                                          
-                                <div class="am-form-group">
-                                    <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="submit" name="material" class="am-btn am-btn-primary">保存修改</button>
-                                    </div>
-                                </div>
-                            </form>
+                                <hr>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="tpl-alert"></div>
             </div>
         </div>
     </div>
@@ -266,4 +299,5 @@
     <script src="js/amazeui.min.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>

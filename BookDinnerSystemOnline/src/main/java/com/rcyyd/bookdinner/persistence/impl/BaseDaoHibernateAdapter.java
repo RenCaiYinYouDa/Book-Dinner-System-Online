@@ -93,6 +93,8 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 		return new PageModel<>(dataList, page, size, totalPage);
 	}
 	
+	
+	
 	@Override
 	public List<E> findByKey(int keyword, String colName) {
 		return sessionFactory.getCurrentSession()

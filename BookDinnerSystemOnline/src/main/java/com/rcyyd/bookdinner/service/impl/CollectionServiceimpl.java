@@ -1,11 +1,17 @@
 package com.rcyyd.bookdinner.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rcyyd.bookdinner.domain.Address;
 import com.rcyyd.bookdinner.domain.Collection;
+import com.rcyyd.bookdinner.domain.ComUser;
+import com.rcyyd.bookdinner.domain.Order;
+import com.rcyyd.bookdinner.domain.PageModel;
 import com.rcyyd.bookdinner.persistence.CollectionDao;
 import com.rcyyd.bookdinner.service.CollectionService;
 
@@ -43,4 +49,16 @@ public class CollectionServiceimpl implements CollectionService {
 		return collectionDao.deleteById(userid, "userid");
 	}
 
+	@Override
+	public PageModel<Collection> getcollectionsByPage(int page, int size, int userid) {
+		PageModel<Collection> pm=collectionDao.findByPageUser(page, size, userid);
+		return pm;
+	}
+
+	@Override
+	public List<Collection> seleCollectByUserId(int userid) {
+		// TODO Auto-generated method stub
+		 return collectionDao.findByKey(userid, "userid");
+		
+	}
 }

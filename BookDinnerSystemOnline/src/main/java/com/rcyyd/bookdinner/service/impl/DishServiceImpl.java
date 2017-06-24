@@ -1,11 +1,14 @@
 package com.rcyyd.bookdinner.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rcyyd.bookdinner.domain.Dish;
+import com.rcyyd.bookdinner.domain.Order;
 import com.rcyyd.bookdinner.domain.PageModel;
 import com.rcyyd.bookdinner.persistence.DishDao;
 import com.rcyyd.bookdinner.service.DishService;
@@ -22,7 +25,7 @@ public class DishServiceImpl implements DishService {
 		PageModel<Dish> pm = dishDao.findByPage(page, size, "dishid");
 		return pm;
 	}
-
+	
 	@Override
 	public boolean publishDish(Dish dish) {
 		dishDao.save(dish);
@@ -45,5 +48,18 @@ public class DishServiceImpl implements DishService {
 		dishDao.update(dish);
 		return true;
 	}
+
+	@Override
+	public PageModel<Dish> getDishesByPage(int page, int size, int dishid) {
+		PageModel<Dish> pm = dishDao.findByPageUser(page, size,dishid);
+		return pm;
+	}
+
+	@Override
+	public PageModel<Dish> getDishesBylist(int page, int size, List<Dish> dishs) {
+		PageModel<Dish> pm= dishDao.findCollection(page, size, dishs);
+		return pm;
+	}
+
 
 }

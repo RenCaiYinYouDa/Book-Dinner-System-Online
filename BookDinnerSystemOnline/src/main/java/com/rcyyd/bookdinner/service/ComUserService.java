@@ -13,4 +13,6 @@ public interface ComUserService extends UserService{
 	boolean publishComment(Comment comment);
 
 	boolean editComUser(ComUser user);
+	
+	boolean updateUser(ComUser user);
 }

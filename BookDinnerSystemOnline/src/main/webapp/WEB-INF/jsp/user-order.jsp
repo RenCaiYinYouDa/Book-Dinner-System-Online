@@ -157,7 +157,7 @@
 
         <div class="tpl-left-nav tpl-left-nav-hover">
             <div class="tpl-left-nav-title">
-                Amaze UI 列表
+                个人中心
             </div>
             <div class="tpl-left-nav-list">
                 <ul class="tpl-left-nav-menu">
@@ -180,10 +180,16 @@
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list active">
                             <i class="am-icon-table"></i>
                             <span>订单查询</span>
-                            <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
-                            
+                            <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->                           
+                        </a>                     
+                    </li>
+                    
+                    <li class="tpl-left-nav-item">
+                        <a href="showPrivateDishes" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-key"></i>
+                            <span>我的收藏</span>
+
                         </a>
-                        
                     </li>
 
                                        

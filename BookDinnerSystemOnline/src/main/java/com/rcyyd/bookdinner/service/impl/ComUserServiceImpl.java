@@ -70,4 +70,11 @@ public class ComUserServiceImpl implements ComUserService{
 		return true;
 	}
 
+	@Override
+	public boolean updateUser(ComUser user) {
+		// TODO Auto-generated method stub
+		userDao.update(user);
+		return true;
+	}
+
 }
