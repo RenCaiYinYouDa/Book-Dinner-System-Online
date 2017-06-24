@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
 	<title>餐品详细页面</title> 
@@ -95,14 +95,29 @@
 				<span style="font-size: 20px;"> 评论：</span>
 			</td>
 		</tr>
-		<tr>
+		<c:forEach items="${commentList}" var="comment">
+			<tr>
 			<td align="center">
-				<span style="font-size: 15px;"> 用户名：</span>
+				<span style="font-size: 15px;"> 用户名：${comment.userid}</span>
 			</td>
 			<td>
-				<span style="font-size: 15px;"> 嗯，有点好吃。</span>
+				<span style="font-size: 15px;"> ${comment.comment}</span>
+			</td>
+			<td>
+				<span style="font-size: 15px;"> ${comment.date}</span>
 			</td>
 		</tr>
+		</c:forEach>
 	</table>
+	<div class="am-fr">
+  		<ul class="am-pagination tpl-pagination">
+      	<c:if test="${currentPage > 1}">
+        	<li class="am-active"><a href="showOrders?page=${currentPage - 1}&type=${status}">上一页</a></li>
+       	</c:if>
+     	<c:if test="${currentPage < totalPage}">
+      		<li class="am-active"><a href="showOrders?page=${currentPage + 1}&type=${status}">下一页</a></li>
+        </c:if>
+        </ul>
+  	</div>
 </body>
 </html>

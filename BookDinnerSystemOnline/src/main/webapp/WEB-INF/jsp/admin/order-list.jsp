@@ -310,7 +310,7 @@
 									<!--
                                     	作者：zzy
                                     	时间：2017-06-21
-                                    	描述：分页，待写
+                                    	描述：分页，完成
                                     -->
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
