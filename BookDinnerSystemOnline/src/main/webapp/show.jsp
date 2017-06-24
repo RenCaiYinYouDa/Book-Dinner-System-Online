@@ -92,7 +92,7 @@
 									</span>
 									<p calss="detailMargin" style="font-size:15px;">现价：人民币${item.price*0.8 } 元</p>
 								</div>
-								<a href="#"><img src="img/detail_cn.gif" border="0" width="60" height="20" /></a>
+								<a href="details.jsp"><img src="img/detail_cn.gif" border="0" width="60" height="20" /></a>
 								<a href="#"><img src="img/buy_cn.gif" border="0" width="60" height="20" /></a>
 							</td>
 						</tr>
