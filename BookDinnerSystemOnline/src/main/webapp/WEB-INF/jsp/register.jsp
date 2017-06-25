@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -67,8 +71,9 @@ class="form-control" placeholder="请输入密码" required>
 				        <input type="text" id="user.address"  name="email" class="form-control" placeholder="请输入电子邮件" required>
 				        <label for="user.trueName" class="sr-only">密保问题：</label>
 				        <select name="securityid">
-				        	<c:forEach items="${securityList }" var="item"></c:forEach>
+				        	<c:forEach items="${securityList }" var="item">
 							<option value="${item.securityid }">${item.security }</option> 
+							</c:forEach>
 						</select> 
 				        <label for="user.trueName" class="sr-only">密保答案：</label>
 				        <input type="text" id="user.trueName"  name="key" class="form-control" placeholder="请输入密保答案" required>

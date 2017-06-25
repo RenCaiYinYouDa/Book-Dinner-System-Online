@@ -45,6 +45,10 @@ public class ComUserController {
 
 	@PostMapping("/comlogin")
 	public String doLogin(String username, String password, Model model, HttpSession session, RedirectAttributes attr) {
+		if (session.getAttribute("user") != null) {
+			return "redirect: indexShow";
+		}
+		
 		ComUser user = (ComUser) comUserService.login(username, password);
 		if (user != null) {
 			session.setAttribute("user", user);
@@ -96,6 +100,7 @@ public class ComUserController {
 	@GetMapping("toRegiste")
 	public String toRegiste(Model model){
 		List<Security> securityList = securityService.getAllSecurities();
+		System.out.println("%%%%%%%%%%%%%%%%%"+securityList.size());
 		model.addAttribute("securityList", securityList);
 		return "register";
 	}

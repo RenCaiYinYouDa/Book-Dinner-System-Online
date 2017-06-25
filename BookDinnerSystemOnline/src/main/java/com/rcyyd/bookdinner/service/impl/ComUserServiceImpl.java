@@ -30,7 +30,7 @@ public class ComUserServiceImpl implements ComUserService{
 	public User login(String username, String password) {
 		List<ComUser> us = userDao.findByKey(username, "username");
 		ComUser user = null;
-		if (us != null) {
+		if (us != null && us.size() > 0) {
 			user = us.get(0);
 			if (user != null) {
 				String md5 = DigestUtils.md5Hex(password);

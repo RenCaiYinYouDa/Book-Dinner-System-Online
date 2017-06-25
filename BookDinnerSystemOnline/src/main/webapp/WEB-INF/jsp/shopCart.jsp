@@ -63,7 +63,7 @@
 										￥20
 									</td>
 									<td>								
-										<input type="text"  value="${cart.count}" size="10" 
+										<input type="number"  value="${cart.count}" size="10" 
 										onchange="window.location='changeCartCount?dishid=${cart.dishid}&userid=${cart.userid}&count='+this.value;">
 									</td>
 									<td>
