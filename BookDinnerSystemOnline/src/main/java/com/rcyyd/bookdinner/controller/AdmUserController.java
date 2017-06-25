@@ -22,6 +22,7 @@ public class AdmUserController {
 		AdmUser user = (AdmUser) admUserService.login(loginName, loginPwd);
 		if (user != null) {
 			session.setAttribute("user", user);
+			session.setAttribute("admin","admin");
 			return "redirect: admin/showDishes";
 		} else {
 			model.addAttribute("hint", "用户名或密码错误!");

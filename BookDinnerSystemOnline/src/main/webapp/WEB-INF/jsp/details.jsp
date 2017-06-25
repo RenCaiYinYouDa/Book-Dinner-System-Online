@@ -25,7 +25,7 @@
 		<tr>
 			<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 				|
-				<a href="#">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
+				<a href="indexShow">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
 				<c:if test="${empty user.username}">
 					<a href="toRegiste">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
 					<a href="toLog?flag=0">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
@@ -50,7 +50,7 @@
 				<table style="width: 100%; border: 0;" cellspacing="0" cellpadding="3">
 					<tr>
 						<td width="148">
-							<img src="${dish.image }" width="500" height="450" />
+							<img src="../dishimg/${dish.image}" width="500" height="450" />
 						</td>
 						<td style="width: 700px" valign="top">
 							<br />

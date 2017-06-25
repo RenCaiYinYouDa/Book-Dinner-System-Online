@@ -35,7 +35,7 @@
 			<tr>
 				<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 					|
-					<a href="#">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
+					<a href="indexShow">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
 					<c:if test="${empty user.username}">
 						<a href="toRegiste">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
 						<a href="toLog?flag=0">&nbsp;&nbsp;用户登录&nbsp;&nbsp;</a> |
@@ -43,8 +43,10 @@
 					</c:if>
 					<c:if test="${not empty user.username}">
 						<font style="color: red">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;欢迎您：${user.username}</font>
+						<c:if test="${empty admin }">
 						<a href="showPersonOrder" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;个人中心&nbsp;&nbsp;</a>
 						<a href="showCart?userid=${user.userid}" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;我的购物车&nbsp;&nbsp;</a>
+						</c:if>
 						<a href="comlogout" style="font-size: 13px;">&nbsp;&nbsp;&nbsp;&nbsp;退出登录&nbsp;&nbsp;</a>
 					</c:if>
 				</td>
@@ -79,7 +81,7 @@
 					<table cellpadding="5" cellspacing="1" style="font-size: 12px;">
 						<c:forEach items="${dishList }" var="item">
 							<tr>
-								<td><a href="getDish?dishid=${item.dishid }"><img src="${item.image }"
+								<td><a href="getDish?dishid=${item.dishid }"><img src="../dishimg/${item.image}"
 										width="148" height="126" border="0" /> </a></td>
 								<td>
 									<div>

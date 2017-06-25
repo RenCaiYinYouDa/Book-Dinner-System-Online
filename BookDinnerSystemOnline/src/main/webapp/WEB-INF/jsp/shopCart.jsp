@@ -17,7 +17,7 @@
 			<tr>
 				<td height="41" colspan="2" style="background-color:#F7F7F7;border-radius: 5px;" align="center">
 					|
-					<a href="#">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
+					<a href="indexShow">&nbsp;&nbsp;网站首页&nbsp;&nbsp;</a> |
 					<c:if test="${empty user.username}">
 						<a href="#">&nbsp;&nbsp;用户中心&nbsp;&nbsp;</a>|
 						<a href="#">&nbsp;&nbsp;用户注册&nbsp;&nbsp;</a> |
