@@ -67,34 +67,13 @@
 										onchange="window.location='changeCartCount?dishid=${cart.dishid}&userid=${cart.userid}&count='+this.value;">
 									</td>
 									<td>
-										￥<s:property value="value.quantity*value.meal.mealPrice"/>
+										￥${20 * cart.count}
 									</td>
 									<td>
 										<a href="deleteCart?dishid=${cart.dishid}&userid=${cart.userid}">删除</a>
 									</td>
 								</tr>
 							</c:forEach>
-							<tr style="background-color:#CCCCFF;">
-								<td>
-									合计
-								</td>
-								<td>
-									-
-								</td>
-								<td>
-									-
-								</td>
-								<td>
-									-
-								</td>
-								<td>
-									￥：<s:property value="#sumPrice"  /> 
-									<s:set var="sumPrice" value="#sumPrice" scope="session" />
-								</td>
-								<td>
-									-
-								</td>
-							</tr>
 						</table>
 						
 						<br />
