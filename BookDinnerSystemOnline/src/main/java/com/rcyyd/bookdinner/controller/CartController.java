@@ -80,6 +80,10 @@ public class CartController {
 	
 	@GetMapping("addToCart")
 	public String toAddToCart(Integer dishid, Integer userid, Integer page, RedirectAttributes attr){
+		if (userid==null) {
+			return "redirect: indexShow";
+		}
+		
 		if (page == null){
 			page = 1;
 		}

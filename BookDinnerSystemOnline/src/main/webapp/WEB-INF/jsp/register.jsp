@@ -58,27 +58,20 @@
 				      <form class="form-signin" action="comreg" method="post">
 				        <h3 class="form-signin-heading">用户注册</h3>
 				        <label for="username" class="sr-only">用户名：</label>
-				        <input type="text" id="username"  name="username" class="form-
-
-control" placeholder="请输入登录名称" required autofocus>
+				        <input type="text" id="username"  name="username" class="form-control" placeholder="请输入登录名称" required autofocus>
 				        <label for="passwrod" class="sr-only">登录密码：</label>
 				        <input type="password" id="password"  name="password" 
 
 class="form-control" placeholder="请输入密码" required>
 				        <label for="user.address" class="sr-only">电子邮件：</label>
-				        <input type="text" id="user.address"  name="email" class="form-
-
-control" placeholder="请输入电子邮件" required>
+				        <input type="text" id="user.address"  name="email" class="form-control" placeholder="请输入电子邮件" required>
 				        <label for="user.trueName" class="sr-only">密保问题：</label>
 				        <select name="securityid">
-							<option value="1">aa</option> 
-							<option value="2">bb</option> 
-							<option value="3">cc</option> 
+				        	<c:forEach items="${securityList }" var="item"></c:forEach>
+							<option value="${item.securityid }">${item.security }</option> 
 						</select> 
 				        <label for="user.trueName" class="sr-only">密保答案：</label>
-				        <input type="text" id="user.trueName"  name="key" class="form-
-
-control" placeholder="请输入密保答案" required>
+				        <input type="text" id="user.trueName"  name="key" class="form-control" placeholder="请输入密保答案" required>
 				        
 				        <div class="checkbox">
 				          <label>

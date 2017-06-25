@@ -1,5 +1,7 @@
 package com.rcyyd.bookdinner.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.alibaba.fastjson.JSON;
 import com.rcyyd.bookdinner.domain.ComUser;
 import com.rcyyd.bookdinner.domain.Comment;
+import com.rcyyd.bookdinner.domain.Dishtype;
 import com.rcyyd.bookdinner.domain.Security;
 import com.rcyyd.bookdinner.service.ComUserService;
 import com.rcyyd.bookdinner.service.CommentService;
+import com.rcyyd.bookdinner.service.DishtypeService;
 import com.rcyyd.bookdinner.service.SecurityService;
 
 @Controller
@@ -90,7 +94,9 @@ public class ComUserController {
 	}
 	
 	@GetMapping("toRegiste")
-	public String toRegiste(){
+	public String toRegiste(Model model){
+		List<Security> securityList = securityService.getAllSecurities();
+		model.addAttribute("securityList", securityList);
 		return "register";
 	}
 }

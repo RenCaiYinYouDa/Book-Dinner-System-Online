@@ -1,5 +1,7 @@
 package com.rcyyd.bookdinner.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +45,11 @@ public class SecurityServiceImpl implements SecurityService {
 	public Security getSecurityByKey(String keyword) {
 		// TODO Auto-generated method stub
 		return securityDao.findByKey(keyword, "security").get(0);
+	}
+
+	@Override
+	public List<Security> getAllSecurities() {
+		// TODO Auto-generated method stub
+		return securityDao.findAll();
 	}
 }
