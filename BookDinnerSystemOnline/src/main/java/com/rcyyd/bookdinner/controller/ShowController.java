@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rcyyd.bookdinner.domain.Dish;
 import com.rcyyd.bookdinner.domain.Dishtype;
@@ -44,6 +45,32 @@ public class ShowController{
 		List<Dishtype> typeList = dishTypeService.getAllTypes();
 		model.addAttribute("typeList", typeList);
 		
+		return "show";
+	}
+	
+	@PostMapping("keyDishes") 
+	public String getDishesByKey(String keyword,  Model model) {
+		int page = 1;
+		int size = 6;
+		PageModel<Dish> pm = dishService.getDishePageByLike(keyword, page, size);
+		model.addAttribute("dishList", pm.getDataList());
+		model.addAttribute("currentPage", pm.getCurrentPage());
+		model.addAttribute("totalPage", pm.getTotalPage());
+		List<Dishtype> typeList = dishTypeService.getAllTypes();
+		model.addAttribute("typeList", typeList);
+		return "show";
+	}
+	
+	@GetMapping("typeDishes") 
+	public String getDishesByType(Integer typeid,  Model model) {
+		int page = 1;
+		int size = 6;
+		PageModel<Dish> pm = dishService.getDishePageByTypeid(typeid, page, size);
+		model.addAttribute("dishList", pm.getDataList());
+		model.addAttribute("currentPage", pm.getCurrentPage());
+		model.addAttribute("totalPage", pm.getTotalPage());
+		List<Dishtype> typeList = dishTypeService.getAllTypes();
+		model.addAttribute("typeList", typeList);
 		return "show";
 	}
 	

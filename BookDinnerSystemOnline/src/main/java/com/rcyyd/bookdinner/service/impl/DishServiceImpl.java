@@ -61,5 +61,16 @@ public class DishServiceImpl implements DishService {
 		return pm;
 	}
 
+	@Override
+	public PageModel<Dish> getDishePageByLike(String keyword, int page, int size) {
+		// TODO Auto-generated method stub
+		return dishDao.findByLike(keyword, "dishname", page, size);
+	}
+
+	@Override
+	public PageModel<Dish> getDishePageByTypeid(Integer typeid, int page, int size) {
+		// TODO Auto-generated method stub
+		return dishDao.findByKey(typeid, "typeid", page, size);
+	}
 
 }

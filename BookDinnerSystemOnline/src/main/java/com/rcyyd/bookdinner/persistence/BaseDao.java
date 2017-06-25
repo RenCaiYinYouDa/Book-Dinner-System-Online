@@ -29,6 +29,8 @@ public interface BaseDao <E, K extends Serializable>{
 	
 	List<E> findByKey(int keyword, String colName);
 	
+	public  PageModel<E> findByKey(int keyword, String colName, Integer page, Integer size);
+	
 	PageModel<E> findByPage(int page, int size);
 	
 	PageModel<E> findByPage(int page, int size, String idName);
@@ -40,4 +42,6 @@ public interface BaseDao <E, K extends Serializable>{
 	PageModel<E> findByOrderStatus(int page, int size, int type);
 	
 	PageModel<E> findByPageAsc(int page, int size, String idName);
+	
+	PageModel<E> findByLike(String keyword, String colName, Integer page, Integer size);
 }

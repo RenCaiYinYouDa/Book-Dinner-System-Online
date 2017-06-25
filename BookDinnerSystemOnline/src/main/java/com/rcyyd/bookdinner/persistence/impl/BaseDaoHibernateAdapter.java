@@ -93,12 +93,23 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 		return new PageModel<>(dataList, page, size, totalPage);
 	}
 	
-	
-	
 	@Override
 	public List<E> findByKey(int keyword, String colName) {
 		return sessionFactory.getCurrentSession()
-				.createQuery("from " + entityTypeName + " as e where e."+colName+" = "+keyword).getResultList();
+				.createQuery("from " + entityTypeName + " as e where e."+colName+" = '"+keyword+"'").getResultList();
+	} 
+	
+	@Override
+	public  PageModel<E> findByKey(int keyword, String colName, Integer page, Integer size) {
+		List<E> dataList = sessionFactory.getCurrentSession()
+				.createQuery("from " + entityTypeName + " as e where e."+colName+" = '"+keyword+"'")
+				.setFirstResult((page - 1) * size).setMaxResults(size)
+				.getResultList();
+		int totalCount = sessionFactory.getCurrentSession()
+				.createQuery("select count(e) from " + entityTypeName + " as e where e."+colName+" = '"+keyword+"'", Long.class)
+				.getSingleResult().intValue();
+		int totalPage = (totalCount - 1) / size + 1;
+		return new PageModel<>(dataList, page, size, totalPage);
 	} 
 	
 	@Override
@@ -152,6 +163,19 @@ public abstract class BaseDaoHibernateAdapter<E, K extends Serializable> impleme
 				.getResultList();
 		int totalCount = sessionFactory.getCurrentSession()
 				.createQuery("select count(o) from " + entityTypeName + " as o", Long.class)
+				.getSingleResult().intValue();
+		int totalPage = (totalCount - 1) / size + 1;
+		return new PageModel<>(dataList, page, size, totalPage);
+	}
+	
+	@Override
+	public PageModel<E> findByLike(String keyword, String colName, Integer page, Integer size) {
+		List<E> dataList = sessionFactory.getCurrentSession()
+				.createQuery("from " + entityTypeName + " as e where e."+colName+" like '%"+keyword+"%'")
+				.setFirstResult((page - 1) * size).setMaxResults(size)
+				.getResultList();
+		int totalCount = sessionFactory.getCurrentSession()
+				.createQuery("select count(e) from " + entityTypeName + " as e where e."+colName+" like '%"+keyword+"%'", Long.class)
 				.getSingleResult().intValue();
 		int totalPage = (totalCount - 1) / size + 1;
 		return new PageModel<>(dataList, page, size, totalPage);

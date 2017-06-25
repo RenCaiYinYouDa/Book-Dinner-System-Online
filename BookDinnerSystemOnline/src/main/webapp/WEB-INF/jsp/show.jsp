@@ -57,7 +57,7 @@
 						<!-- 菜系菜的种类循环开始 -->
 						<c:forEach items="${typeList }" var="item">
 							<br>
-							<a href="#" style="font-size: 18px;">${item.type}</a>
+							<a href="typeDishes?typeid=${item.typeid }" style="font-size: 18px;">${item.type}</a>
 							<br>
 						</c:forEach>
 						<!-- 菜系循环结束 -->
@@ -66,8 +66,8 @@
 					<br />
 					<div align="right">
 					<!--菜品查询表单-->
-						<form theme="simple" method="post" action="toShowMeal">
-							<input placeholder="请输入菜名" type="text"/>
+						<form theme="simple" method="POST" action="keyDishes">
+							<input placeholder="请输入菜名" type="text" name="keyword"/>
 							<input type="submit" value="查询"/>
 						</form>
 					</div>
