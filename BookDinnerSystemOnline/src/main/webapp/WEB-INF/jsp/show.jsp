@@ -81,7 +81,7 @@
 					<table cellpadding="5" cellspacing="1" style="font-size: 12px;">
 						<c:forEach items="${dishList }" var="item">
 							<tr>
-								<td><a href="getDish?dishid=${item.dishid }"><img src="../dishimg/${item.image}"
+								<td><a href="getDish?dishid=${item.dishid }"><img src="dishimg/${item.image}"
 										width="148" height="126" border="0" /> </a></td>
 								<td>
 									<div>

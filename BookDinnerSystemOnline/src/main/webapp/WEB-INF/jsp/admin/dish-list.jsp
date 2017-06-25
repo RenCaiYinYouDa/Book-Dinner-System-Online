@@ -92,7 +92,7 @@
                         <li>
                             <a href="javascript:;" class="tpl-dropdown-content-progress">
                                 <span class="task">
-                        <span class="desc">Amaze UI 用户中心 v1.2 </span>
+                        <a href="indexShow"><span class="desc">网上订餐系统</span></a>
                                 <span class="percent">45%</span>
                                 </span>
                                 <span class="progress">

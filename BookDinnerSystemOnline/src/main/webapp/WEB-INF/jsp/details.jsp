@@ -50,7 +50,7 @@
 				<table style="width: 100%; border: 0;" cellspacing="0" cellpadding="3">
 					<tr>
 						<td width="148">
-							<img src="../dishimg/${dish.image}" width="500" height="450" />
+							<img src="dishimg/${dish.image}" width="500" height="450" />
 						</td>
 						<td style="width: 700px" valign="top">
 							<br />
